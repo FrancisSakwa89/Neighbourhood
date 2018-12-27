@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AWARDS</title>
+    <title>NEIGHBOURHOOD</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
@@ -29,7 +29,7 @@
     
     <!--Main layout-->
     <main>
-        <h1 style="text-align:center;font-family: 'Major Mono Display', monospace;">AWARDSITE</h1>
+        <h1 style="text-align:center;font-family: 'Major Mono Display', monospace;">NEIGHBOURHOOD</h1>
         <div class="container-fluid text-center">
 
             <!--Card-->
@@ -37,7 +37,7 @@
 
                 <!--Card image-->
                 <div class="view view-cascade overlay wow fadeIn">
-                    <img src="https://images.unsplash.com/photo-1488711500009-f9111944b1ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" width="100%" height="10%">
+                    <img src="https://images.unsplash.com/photo-1541963993075-3a61eb0febbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="img-fluid" width="100%" height="10%">
                     <a href="#!">
                         <div class="mask rgba-white-slight"></div>
                     </a>
@@ -45,22 +45,7 @@
                 <!--/Card image-->
 
                 <!--Card content-->
-                <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s" style="background-color:skyblue">
-                    <!--Title-->
-                    <h4 class="card-title" style="color:black"><strong>Shortcuts</strong></h4>
-                    
-
-                        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg">Contacts</a>
-                        <a href="{% url 'newprofile' %}" class="btn btn-primary btn-lg">New Profile</a>
-                        <a href="{% url 'newproject' %}" class="btn btn-primary btn-lg">Add Project</a>
-
-                </div>
-                <!--/.Card content-->
-
-            </div>
-            <!--/.Card-->
-        
-        </div>
+                <!--  -->
         
     </main>
     <!--/Main layout-->
@@ -85,7 +70,6 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4">Add Projects</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'newproject' %}" style="color:green">Add Project</a></li>
                         
                     </ul>
                 </div>
@@ -97,7 +81,6 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4">Projects</h5>
                     <ul class="list-unstyled">
-                        <li><a  href="{% url 'myprojects' %}" style="color:green">My Projects</a></li>
                         
                     </ul>
                 </div>
@@ -109,7 +92,6 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4" style="color:white">Profile</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'profile' profile.id %}" style="color:green">My Profile</a></li>
                         
                     </ul>
                 </div>
