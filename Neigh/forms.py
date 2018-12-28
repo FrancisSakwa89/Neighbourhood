@@ -5,7 +5,12 @@ from .models import Profile, Neigh
 class NeighForm(forms.ModelForm):
   class Meta:
     model = Project
-    exclude = ['poster','postername', 'pub_date']
+    exclude = ['poster','neighbourhood', 'pub_date']
+
+class BusinessForm(forms.ModelForm):
+  class Meta:
+    model = Project
+    exclude = ['poster','neighbourhood', 'pub_date']
 
 
 

@@ -44,13 +44,13 @@ class Business(models.Model):
   class Meta:
     ordering = ['title']
 
-  def save_project(self):
+  def save_business(self):
     self.save()
 
-  def delete_project(self):
+  def delete_business(self):
     self.delete()
 
-class Neighbor(models.Model):
+class Neighbourhood(models.Model):
   title = models.CharField(max_length=60)
   image = models.ImageField(upload_to = 'photos/')
   description = models.TextField()
@@ -63,10 +63,10 @@ class Neighbor(models.Model):
 
 
 
-  def save_rating(self):
+  def save_neighbor(self):
     self.save()
 
-  def delete_rating(self):
+  def delete_neighbor(self):
     self.delete()
 
 class NeighLetterRecipients(models.Model):
