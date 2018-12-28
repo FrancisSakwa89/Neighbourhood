@@ -9,7 +9,23 @@
         <li class="nav-item active">
           <a class="btn btn-outline-primary" href="{% url 'welcome'%}">Home <span class="sr-only">(current)</span></a>
         </li>
-        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle btn btn-outline-primary" data-toggle="dropdown" role="button" aria-expanded="false">More Apps
+                    <span class="caret"></span>
+                </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>              <li><a class="nav-link" href="/accounts/login">Login</a></li>
+        <li><a class="nav-link" href="/accounts/register">Register</a></li>
+        <li><a class="nav-link" href="{% url 'profile' profile.id %}">Profile</a></li>
+        <li><a class="nav-link" href="{% url 'newneighbourhood' %}">Add Neighbourhood</a></li>
+        <li><a class="nav-link" href="{% url 'newprofile' %}">Add Profile</a></li>
+        <li><a class="nav-link" href="{% url 'contact' %}">Contacts</a></li>
+        <li><a class="nav-link" href="{% url 'subscribe' %}">Subscribe</a></li>
+        <li><a class="nav-link" href="{% url 'myneighbourhood' %}">My Neighbourhoods</a></li>
+        <li><a class="nav-link" href="{% url 'password' %}">Forgot Password</a></li>
+
+          </li>
+        </ul>
 
           
         {% if user.is_authenticated %}
