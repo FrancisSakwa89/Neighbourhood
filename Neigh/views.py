@@ -248,3 +248,26 @@ def subscribe(request):
     else:
         form = NeighLetterForm()
     return render(request, 'subscribe.html', {'letterForm':form,'profile':profile})    
+
+
+
+@login_required(login_url='/accounts/login/')
+def newcomment(request,id):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+  id = id
+
+  current_username = request.user.username
+  if request.method == 'POST':
+    form = NewCommentForm(request.POST)
+    if form.is_valid():
+      comment = form.save(commit=False)
+      comment.postername = current_username
+      comment.neighbourhood = neighbourhood.objects.get(pk=id)
+      comment.save()
+    return redirect('neighbourhood',id)
+
+  else:
+    form = NewCommentForm()
+
+  return render(request, 'newcomment.html',{'form':form,'profile':profile,'id':id})
