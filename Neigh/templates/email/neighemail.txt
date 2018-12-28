@@ -1,3 +1,3 @@
 Hello {{name}}
 
-Welcome to Awards site feel free to post links here ...
+This app is all about neighbourhood watch be friends and close to each other ... Welcome
