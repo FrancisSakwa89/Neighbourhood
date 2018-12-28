@@ -72,3 +72,9 @@ class Neighbourhood(models.Model):
 class NeighLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)
     email = models.EmailField()    
+
+class Comment(models.Model):
+  comment = models.TextField()
+  neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+  postername = models.CharField(max_length=60)
+  pub_date = models.DateTimeField(auto_now_add=True)

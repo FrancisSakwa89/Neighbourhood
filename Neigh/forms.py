@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Profile, Neighbourhood
+from .models import Profile, Neighbourhood,Comment
 
 class NeighForm(forms.ModelForm):
   class Meta:
