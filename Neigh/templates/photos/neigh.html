@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <div class="col-md-4 mx-auto">
+        <h2 class="firstletter">{{neighbourhood.title}}</h2>
+    </div>
+  <hr>
+  
+  <div class="col-md-4 mx-auto">
+      <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.title }}">
+    <div class="card-body">
+      <h5 class="card-title firstletter">{{neighbourhood.title}}</h5>
+      <p class="card-text">
+        <p>{{neighbourhood.description}}</p>
+        <p>{{neighbourhood.email}}</p>
+
+        </p>
+      </p>
+      <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.owner}}</p>
+    </div>
+  </div>
+
+  <div class="card-letter" style="text-align:center">
+    <a href="{% url 'newcomment' neighbourhood.id %}"><button type="button" class="btn btn-primary">Comment</button></a>
+    </div>
+    <br>
+    <br>
+  
+    {% if comments%}
+    <div class="col-md-4 mx-auto">
+        <br>
+  
+    <h5>User comments</h5>
+    {% for comment in comments %}
+    <div class="card text-white bg-primary mb-3">
+        <div class="col-md-4 mx-auto">
+            <p>{{comment.title}}</p>
+          <footer class="blockquote-footer" style="color:black;font-weight:bold"><cite title="Source Title">Comment By: {{comment.postername}}</cite></footer>
+        </div>
+      </div>
+    </div>
+    <p></p>
+    {% endfor %}
+    </div>
+  </div>
+  
+    {% else %}
+    <h4 style="text-align:center"> No comments Upto Now</h4>
+    {% endif %}
+  </div>
+  <!-- <div class="card-letter" style="text-align:center">
+  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary">Rate</button></a>
+  </div> -->
+  <br>
+  <br>
+
+  
+</div>
+<style>
+
+.btn btn-primary{
+  text-align: center;
+  margin-right: 50%;
+}
+</style>
+{% endblock %}

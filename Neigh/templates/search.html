@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+        <div class="intro">
+                <h2>Searching...</h2>
+            </div>
+            <hr>
+        
+{% if searched_neighbourhood %}
+    <h5>Found {{ searched_neighbourhoods|length }} neighbourhood(s) for the searched term '{{message}}'</h5>
+{% else %}
+    <h5> Found 0 neighbourhood(s) for the search term '{{message}}'</h5>
+{% endif %}
+
+<br>
+
+{% if searched_neighbourhood %}
+<ul class="list-group list-group-flush">
+        {% for neighbourhood in searched_neighbourhood %}
+        <li class="list-group-item" style="background-color: transparent;">
+            <p class="firstletter">{{neighbourhood.title}}
+            <a href="{% url 'neighbourhood' neighbourhood.id %}" style="float:right;">
+                    <button type="button" class="btn btn-info">View</button>       
+            </a>
+            </p>
+        
+</li>
+        {% endfor %}
+</ul>
+{% endif %}
+
+
+
+</div>
+
+{% endblock %}

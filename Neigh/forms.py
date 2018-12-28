@@ -1,15 +1,15 @@
 from django import forms
 
-from .models import Profile, Neigh
+from .models import Profile, Neighbourhood
 
 class NeighForm(forms.ModelForm):
   class Meta:
-    model = Project
+    model = Neighbourhood
     exclude = ['poster','neighbourhood', 'pub_date']
 
 class BusinessForm(forms.ModelForm):
   class Meta:
-    model = Project
+    model = Neighbourhood
     exclude = ['poster','neighbourhood', 'pub_date']
 
 

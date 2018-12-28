@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+<form  action="{%url 'subscribe'%}" method="post" style="margin-left: 30%;margin-right: 30%;color: white">
+        {%csrf_token%}
+    
+        {% bootstrap_form letterForm layout='inline'%}
+        <input type="submit" class="btn btn-primary" value="Subscribe">
+      </form>
+      <style>
+        .jumbotron {
+            background-size: cover;
+        }
+        </style>
+        </div>
+      {% endblock %}

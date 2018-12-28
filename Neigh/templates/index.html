@@ -45,9 +45,26 @@
                 <!--/Card image-->
 
                 <!--Card content-->
-                <!--  -->
+        
+                <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s" style="background-color:skyblue">
+                    <!--Title-->
+                    <h4 class="card-title" style="color:black"><strong>Shortcuts</strong></h4>
+                    
+
+                        <a href="{% url 'myneighbourhood' %}" class="btn btn-primary btn-lg">My Hoods</a>
+                        <a href="{% url 'newprofile' %}" class="btn btn-primary btn-lg">New Profile</a>
+                        <a href="{% url 'newneighbourhood' %}" class="btn btn-primary btn-lg">Add Hoods</a>
+
+                </div>
+                <!--/.Card content-->
+
+            </div>
+            <!--/.Card-->
+        
+        </div>
         
     </main>
+
     <!--/Main layout-->
 
     <!--Footer-->
@@ -64,12 +81,10 @@
                 </div>
                 <!--/.First column-->
 
-                <hr class="w-100 clearfix d-md-none">
-
-                <!--Second column-->
                 <div class="col-md-2 mx-auto">
-                    <h5 class="text-uppercase font-weight-bold mb-4">Add Projects</h5>
+                    <h5 class="text-uppercase font-weight-bold mb-4">Add Hoods</h5>
                     <ul class="list-unstyled">
+                        <li><a href="{% url 'newneighbourhood' %}" style="color:green">Add Neighbourhood</a></li>
                         
                     </ul>
                 </div>
@@ -79,8 +94,9 @@
 
                 <!--Third column-->
                 <div class="col-md-2 mx-auto">
-                    <h5 class="text-uppercase font-weight-bold mb-4">Projects</h5>
+                    <h5 class="text-uppercase font-weight-bold mb-4">Neighbourhoods</h5>
                     <ul class="list-unstyled">
+                        <li><a  href="{% url 'myneighbourhood' %}" style="color:green">My Neighbourhoods</a></li>
                         
                     </ul>
                 </div>
@@ -92,6 +108,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4" style="color:white">Profile</h5>
                     <ul class="list-unstyled">
+                        <li><a href="{% url 'profile' profile.id %}" style="color:green">My Profile</a></li>
                         
                     </ul>
                 </div>

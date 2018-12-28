@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Profile, 
+from .models import Profile,Neighbourhood 
 
 
 class NeighbourhoodSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Project
+    model = Neighbourhood
     fields = ('title','image','description','owner','email','neighbourhood','pub_date')
 
 

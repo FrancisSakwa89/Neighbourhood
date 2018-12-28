@@ -73,7 +73,7 @@ def newbusiness(request):
     form = BusinessForm(request.POST, request.FILES)
     if form.is_valid():
       business = form.save(commit=False)
-      business.poster = current_user
+      business.owner = current_user
       business.neighbourhood = current_username
       business.save()
     return redirect('welcome')
@@ -82,6 +82,29 @@ def newbusiness(request):
     form = BusinessForm()
 
   return render(request, 'newbusiness.html',{'form':form,'profile':profile})
+
+
+@login_required(login_url='/accounts/login/')
+def newneighbourhood(request):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+
+  current_user = request.user
+  current_username = request.user.username
+
+  if request.method == 'POST':
+    form = NeighForm(request.POST, request.FILES)
+    if form.is_valid():
+      neighbourhood = form.save(commit=False)
+      neighbourhood.owner = current_user
+      neighbourhood.neighbourhood = current_username
+      neighbourhood.save()
+    return redirect('welcome')
+
+  else:
+    form = NeighForm()
+
+  return render(request, 'newneigh.html',{'form':form,'profile':profile})
 
 # @login_required(login_url='/accounts/login/')
 # def newrating(request,id):
@@ -103,7 +126,7 @@ def newbusiness(request):
 #       avg = ((design_rating + usability_rating + content_rating)/3)
 
 #       rating.average = avg
-#       rating.postername = current_username
+#       rating.ownername = current_username
 #       rating.project = Project.objects.get(pk=id)
 
 #       rating.save()
@@ -122,7 +145,7 @@ def profile(request, id):
   user = request.user
   
 
-  neighbourhoods = Neighbourhood.objects.filter(poster=frank).order_by('-pub_date')
+  neighbourhoods = Neighbourhood.objects.filter(owner=frank).order_by('-pub_date')
   businesscount=neighbourhoods.count()
 
 
@@ -130,7 +153,7 @@ def profile(request, id):
 
 
 @login_required(login_url='/accounts/login/')
-def business(request, id):
+def neighbourhood(request, id):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
   
