@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .forms import NeighForm, BusinessForm, ProfileForm,NewCommentForm
-from .models import Neighbourhood, Business, Profile,NeighLetterRecipients
+from .models import Neighbourhood, Business, Profile,NeighLetterRecipients,Post,Comment
 from .email import send_welcome_email
 from django.db.models import Avg
 from rest_framework.response import Response
@@ -30,11 +30,15 @@ def welcome(request):
 def myneighbourhood(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
-
   neighbourhoods = Neighbourhood.objects.all().order_by('-pub_date')
 
-  return render(request, 'myneigh.html',{'neighbourhoods':neighbourhoods,'profile':profile})
+#   try:
+#     posts = Post.objects.filter(neighbourhood=profile.neighbourhood).order_by('-pub_date')
 
+#   except ObjectDoesNotExist:
+#     posts = []
+
+  return render(request, 'myneigh.html',{'profile':profile,'neighbourhoods':neighbourhoods})
 
 @login_required(login_url='/accounts/login/')
 def password(request):
@@ -49,7 +53,7 @@ def password(request):
 
 class BusinessList(APIView):
   def get(self, request, format=None):
-    all_neighbourhoods = Project.objects.all()
+    all_neighbourhoods = neighbourhood.objects.all()
     serializers = neighbourhoodserializer(all_neighbourhoods, many=True)
     return Response(serializers.data)
 
@@ -127,10 +131,10 @@ def newneighbourhood(request):
 
 #       rating.average = avg
 #       rating.ownername = current_username
-#       rating.project = Project.objects.get(pk=id)
+#       rating.neighbourhood = neighbourhood.objects.get(pk=id)
 
 #       rating.save()
-#     return redirect('project',id)
+#     return redirect('neighbourhood',id)
 
 #   else:
 #     form = RatingForm()
@@ -145,11 +149,11 @@ def profile(request, id):
   user = request.user
   
 
-  neighbourhoods = Neighbourhood.objects.filter(owner=frank).order_by('-pub_date')
-  businesscount=neighbourhoods.count()
+  neighbourhoods = Neighbourhood.objects.filter(poster=frank).order_by('-pub_date')
+  neighbourhoodcount=neighbourhoods.count()
 
 
-  return render(request, 'photos/profile.html',{'profile':profile,'user':user,'businesscount':businesscount,'neighbourhoods':neighbourhoods})
+  return render(request, 'photos/profile.html',{'profile':profile,'user':user,'neighbourhoodcount':neighbourhoodcount,'neighbourhoods':neighbourhoods})
 
 
 @login_required(login_url='/accounts/login/')
@@ -158,19 +162,22 @@ def neighbourhood(request, id):
   profile = Profile.objects.get(user=frank)
   
   neighbourhoods = Neighbourhood.objects.get(pk=id)
-#   ratings = Rating.objects.filter(project=id)
+#   neighbourhoods = Neighbourhood.objects.get(pk=id)
+  comments = Comment.objects.filter(neighbourhood=id).order_by('-pub_date')
 
+  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood,'comments':comments})
+
+
+
+@login_required(login_url='/accounts/login/')
+def post(request, id):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
   
-  neighbourhoods = Neighbourhood.objects.get(pk=id)
+  post = Post.objects.get(pk=id)
+  comments = Comment.objects.filter(post=id).order_by('-pub_date')
 
-#   a = Rating.objects.filter(project=id).aggregate(Avg('design'))
-#   b = Rating.objects.filter(project=id).aggregate(Avg('usability'))
-#   c = Rating.objects.filter(project=id).aggregate(Avg('content'))
-#   d = Rating.objects.filter(project=id).aggregate(Avg('average'))
-  
-
-
-  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood})
+  return render(request, 'post.html',{'profile':profile,'post':post,'comments':comments})
 
 
 
@@ -211,19 +218,19 @@ def search_results(request):
 
     try:
       no_ws = search_term.strip()
-      searched_business = Business.objects.filter(title__icontains = no_ws)
+      searched_business = Business.objects.filter(name__icontains = no_ws)
+      searched_businesses = searched_business.filter(neighborhood=profile.neighborhood)
 
     except ObjectDoesNotExist:
-      searched_business = []
+      searched_businesses = []
 
-    return render(request, 'search.html',{'message':message ,'title':title, 'searched_business':searched_business,'profile':profile})
+    return render(request, 'search.html',{'message':message ,'title':title, 'searched_businesses':searched_businesses,'profile':profile})
 
   else:
-    message = 'You haven\'t searched for any Business'
+    message = 'You haven\'t searched for any business'
     
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
-
 
 @login_required(login_url='/accounts/login/')
 def contact(request):
@@ -248,6 +255,29 @@ def subscribe(request):
     else:
         form = NeighLetterForm()
     return render(request, 'subscribe.html', {'letterForm':form,'profile':profile})    
+
+@login_required(login_url='/accounts/login/')
+def newpost(request):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+  current_user = request.user
+  current_username = request.user.username
+
+  if request.method == 'POST':
+    form = NewPostForm(request.POST, request.FILES)
+    if form.is_valid():
+      post = form.save(commit=False)
+      post.poster = current_user
+      post.postername = current_username
+      post.neighborhood = profile.neighborhood
+      post.save()
+    return redirect('homepage')
+
+  else:
+    form = NewPostForm()
+
+  return render(request, 'newpost.html',{'form':form,'profile':profile})
+
 
 
 

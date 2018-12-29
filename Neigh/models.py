@@ -32,12 +32,9 @@ class Profile(models.Model):
 
 class Business(models.Model):
   title = models.CharField(max_length=60)
-  image = models.ImageField(upload_to = 'photos/')
-  description = models.TextField()
-  owner = models.CharField(max_length=60)
-  neighbourhood = models.ForeignKey(User,on_delete=models.CASCADE)
+  neighbourhood = models.CharField(max_length=60)
+  User = models.ForeignKey(User,on_delete=models.CASCADE,default='me')
   email = models.EmailField(max_length=60)
-  pub_date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
     return self.title
@@ -53,14 +50,13 @@ class Business(models.Model):
 class Neighbourhood(models.Model):
   title = models.CharField(max_length=60)
   image = models.ImageField(upload_to = 'photos/')
-  description = models.TextField()
-  owner = models.CharField(max_length=60)
-  neighbourhood = models.ForeignKey(User,on_delete=models.CASCADE)
+  occupants_count = models.PositiveIntegerField(default='0')
+  # poster = models.ForeignKey(User,on_delete=models.CASCADE,default='me')
+  description = models.TextField(default='description')
+#   owner = models.CharField(max_length=60)
+#   neighbourhood = models.ForeignKey(User,on_delete=models.CASCADE)
   email = models.EmailField(max_length=60)
   pub_date = models.DateTimeField(auto_now_add=True)
-
-
-
 
 
   def save_neighbor(self):
@@ -77,4 +73,12 @@ class Comment(models.Model):
   comment = models.TextField()
   neighbourhood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
   postername = models.CharField(max_length=60)
+  pub_date = models.DateTimeField(auto_now_add=True)
+
+class Post(models.Model):
+  name = models.CharField(max_length=60)
+  post = models.TextField()
+  poster = models.ForeignKey(User,on_delete=models.CASCADE)
+  postername = models.CharField(max_length=60)
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
   pub_date = models.DateTimeField(auto_now_add=True)

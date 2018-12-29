@@ -7,26 +7,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>New Comment</title>
+  <title>New business</title>
+  {{form.media}}
+
 {% block styles %} {% bootstrap_css %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endblock %}
 
 </head>
 
 <body>
-
-  
   {% include 'navbar.html' %}
-  <div class="container">
-      <div class="intro">
-          <h2>New Comment</h2>
-        </div>
+<div class="container">
+        <style>
+                .container {
+                    background: linear-gradient(to right, #16222a, #3a6073);
+                    background-size: cover;
+                    color: whitesmoke;
+                }
+        </style>        
+
+    <div class="intro">
+        <h2>New business</h2>
+      </div>
 <hr>
-  <form  action="{%url 'newcomment' id %}" method="post" enctype="multipart/form-data">
+  <form  action="{%url 'newbusiness'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Add Comment">
+    <input type="submit" class="btn btn-success btn-lg" value="Add business">
   </form>
 
   {% block scripts %}

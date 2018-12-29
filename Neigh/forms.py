@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Profile, Neighbourhood,Comment
+from .models import Profile, Neighbourhood,Comment,Post
 
 class NeighForm(forms.ModelForm):
   class Meta:
@@ -10,7 +10,7 @@ class NeighForm(forms.ModelForm):
 class BusinessForm(forms.ModelForm):
   class Meta:
     model = Neighbourhood
-    exclude = ['poster','neighbourhood', 'pub_date']
+    exclude = ['User','neighbourhood', 'pub_date']
 
 
 
@@ -29,3 +29,8 @@ class NewCommentForm(forms.ModelForm):
   class Meta:
     model = Comment
     exclude = ['neighbourhood','postername','pub_date']      
+
+class NewPostForm(forms.ModelForm):
+  class Meta:
+    model = Post
+    exclude = ['poster','postername','neighborhood', 'pub_date']
