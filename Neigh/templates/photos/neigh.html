@@ -4,31 +4,32 @@
 <div class="container">
 
     <div class="col-md-4 mx-auto">
-        <h2 class="firstletter">{{neighbourhood.title}}</h2>
+        <h2 class="firstletter">{{neighbourhood.name}}</h2>
     </div>
   <hr>
   
   <div class="col-md-4 mx-auto">
-      <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.title }}">
+      <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.name }}">
     <div class="card-body">
-      <h5 class="card-title firstletter">{{neighbourhood.title}}</h5>
+      <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
       <p class="card-text">
         <p>{{neighbourhood.description}}</p>
         <p>{{neighbourhood.email}}</p>
 
         </p>
       </p>
-      <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.owner}}</p>
+      <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.poster}}</p>
     </div>
   </div>
 
   <div class="card-letter" style="text-align:center">
-    <a href="{% url 'newcomment' neighbourhood.id %}"><button type="button" class="btn btn-primary">Comment</button></a>
+    <a href="{% url 'newneighbourhood' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a>   
+
     </div>
     <br>
     <br>
   
-    {% if comments%}
+    <!-- {% if comments%}
     <div class="col-md-4 mx-auto">
         <br>
   
@@ -37,7 +38,7 @@
     <div class="card text-white bg-primary mb-3">
         <div class="col-md-4 mx-auto">
             <p>{{comment.comment}}</p>
-          <footer class="blockquote-footer" style="color:black;font-weight:bold"><cite title="Source Title">Comment By: {{comment.postername}}</cite></footer>
+          <footer class="blockquote-footer" style="color:black;font-weight:bold"><cite name="Source name">Comment By: {{comment.postername}}</cite></footer>
         </div>
       </div>
     </div>
@@ -49,9 +50,8 @@
     {% else %}
     <h4 style="text-align:center"> No comments Upto Now</h4>
     {% endif %}
-  </div>
+  </div> -->
   <!-- <div class="card-letter" style="text-align:center">
-  <a href="{% url 'newrating' project.id %}"><button type="button" class="btn btn-primary">Rate</button></a>
   </div> -->
   <br>
   <br>

@@ -83,3 +83,9 @@ class Post(models.Model):
   postername = models.CharField(max_length=60)
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
   pub_date = models.DateTimeField(auto_now_add=True)
+
+class Contact(models.Model):
+  name = models.CharField(max_length=140)
+  contact = models.CharField(max_length=60)
+  email = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)

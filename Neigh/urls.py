@@ -16,7 +16,7 @@ urlpatterns=[
     url(r'^new/comment$',views.newcomment, name='newcomment'), 
     url(r'^new/post$',views.newpost, name='newpost'),
     url(r'^mail$',views.mail,name='mail'),
-    # url(r'^api/business/$', views.BusinessList.as_view()),
+    url(r'^api/business/$', views.BusinessList.as_view()),
     url(r'^subscribe/', views.subscribe, name='subscribe'),
     url(r'^business$', views.business,name = 'business'),
     url(r'^myneighbourhood/', views.myneighbourhood, name='myneighbourhood'),

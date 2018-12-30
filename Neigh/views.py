@@ -160,9 +160,9 @@ def neighbourhood(request, id):
   
   neighbourhoods = Neighbourhood.objects.get(pk=id)
 #   neighbourhoods = Neighbourhood.objects.get(pk=id)
-  comments = Comment.objects.filter(neighbourhood=id).order_by()
+  # comments = Comment.objects.filter(neighbourhood=id).order_by()
 
-  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood,'comments':comments})
+  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood})
 
 
 
@@ -201,33 +201,6 @@ def newprofile(request):
 
   return render(request, 'newprofile.html',{'form':form,'profile':profile})
 
-
-@login_required(login_url='/accounts/login/')
-def search_results(request):
-  frank = request.user.id
-  profile = Profile.objects.get(user=frank)
-
-
-  if 'business' in request.GET and request.GET['business']:
-    search_term = request.GET.get('business')
-    message = f'{search_term}'
-    title = 'Search Results'
-
-    try:
-      no_ws = search_term.strip()
-      searched_business = Business.objects.filter(name__icontains = no_ws)
-      searched_businesses = searched_business.filter(neighbourhood=profile.neighbourhood)
-
-    except ObjectDoesNotExist:
-      searched_businesses = []
-
-    return render(request, 'search.html',{'message':message ,'title':title, 'searched_businesses':searched_businesses,'profile':profile})
-
-  else:
-    message = 'You haven\'t searched for any business'
-    
-    title = 'Search Error'
-    return render(request,'search.html',{'message':message,'title':title,'profile':profile})
 
 @login_required(login_url='/accounts/login/')
 def contact(request):
@@ -314,3 +287,30 @@ def business(request):
   # return redirect('welcome')
 
   return render(request, 'business.html',{'businesses':businesses,'profile':profile})
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+
+
+  if 'business' in request.GET and request.GET['business']:
+    search_term = request.GET.get('business')
+    message = f'{search_term}'
+    title = 'Search Results'
+
+    try:
+      no_ws = search_term.strip()
+      searched_business = Business.objects.filter(name__icontains = no_ws)
+      searched_businesses = searched_business.filter(neighbourhood=profile.neighbourhood)
+
+    except ObjectDoesNotExist:
+      searched_businesses = []
+
+    return render(request, 'search.html',{'message':message ,'title':title, 'searched_businesses':searched_businesses,'profile':profile})
+
+  else:
+    message = 'You haven\'t searched for any business'
+    
+    title = 'Search Error'
+    return render(request,'search.html',{'message':message,'title':title,'profile':profile})
