@@ -5,10 +5,29 @@ from django.dispatch import receiver
 
 
 # Create your models here.
+class Neighbourhood(models.Model):
+  name = models.CharField(max_length=60,default='name')
+  image = models.ImageField(upload_to = 'photos/')
+  location = models.CharField(max_length=60)
+  occupants_count = models.PositiveIntegerField()
+  email = models.EmailField(max_length=60,default='email')
+  # pub_date = models.DateTimeField(auto_now_add=True,default='dat')
+
+
+  def save_neighbourhood(self):
+    self.save()
+
+  def delete_neighbourhood(self):
+    self.delete()
+
+
+
+
 class Profile(models.Model):
   photo = models.ImageField(upload_to = 'photos/')
   bio = models.CharField(max_length=200)
   contact = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,blank=True,null=True)
   user = models.OneToOneField(User, on_delete=models.CASCADE)
 
   @receiver(post_save, sender=User)
@@ -31,15 +50,14 @@ class Profile(models.Model):
 
 
 class Business(models.Model):
-  title = models.CharField(max_length=60)
-  neighbourhood = models.CharField(max_length=60)
-  User = models.ForeignKey(User,on_delete=models.CASCADE,default='me')
-  email = models.EmailField(max_length=60)
+  name = models.CharField(max_length=60)
+  email = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
   def __str__(self):
-    return self.title
+    return self.name
   class Meta:
-    ordering = ['title']
+    ordering = ['name']
 
   def save_business(self):
     self.save()
@@ -47,23 +65,6 @@ class Business(models.Model):
   def delete_business(self):
     self.delete()
 
-class Neighbourhood(models.Model):
-  title = models.CharField(max_length=60)
-  image = models.ImageField(upload_to = 'photos/')
-  occupants_count = models.PositiveIntegerField(default='0')
-  # poster = models.ForeignKey(User,on_delete=models.CASCADE,default='me')
-  description = models.TextField(default='description')
-#   owner = models.CharField(max_length=60)
-#   neighbourhood = models.ForeignKey(User,on_delete=models.CASCADE)
-  email = models.EmailField(max_length=60)
-  pub_date = models.DateTimeField(auto_now_add=True)
-
-
-  def save_neighbor(self):
-    self.save()
-
-  def delete_neighbor(self):
-    self.delete()
 
 class NeighLetterRecipients(models.Model):
     name = models.CharField(max_length = 30)

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
-from .forms import NeighForm, BusinessForm, ProfileForm,NewCommentForm
+from .forms import NeighForm, NewBusinessForm, ProfileForm,NewCommentForm
 from .models import Neighbourhood, Business, Profile,NeighLetterRecipients,Post,Comment
 from .email import send_welcome_email
 from django.db.models import Avg
@@ -14,6 +14,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import NeighbourhoodSerializer, ProfileSerializer
 from .forms import NeighLetterForm
+from .models import Profile, Post, Comment, Business, Neighbourhood
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -21,7 +22,7 @@ def welcome(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
 
-  # neighbourhoods = Neighbourhood.objects.all().order_by('-pub_date')
+  # neighbourhoods = Neighbourhood.objects.all().order_by()
 
   return render(request, 'index.html',{'profile':profile})
 
@@ -30,10 +31,10 @@ def welcome(request):
 def myneighbourhood(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
-  neighbourhoods = Neighbourhood.objects.all().order_by('-pub_date')
+  neighbourhoods = Neighbourhood.objects.all().order_by()
 
 #   try:
-#     posts = Post.objects.filter(neighbourhood=profile.neighbourhood).order_by('-pub_date')
+#     posts = Post.objects.filter(neighbourhood=profile.neighbourhood).order_by()
 
 #   except ObjectDoesNotExist:
 #     posts = []
@@ -45,7 +46,7 @@ def password(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
 
-  # neighbourhoods = Neighbourhood.objects.all().order_by('-pub_date')
+  # neighbourhoods = Neighbourhood.objects.all().order_by()
 
   return render(request, 'password.html',{'profile':profile})
 
@@ -70,20 +71,16 @@ def newbusiness(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
 
-  current_user = request.user
-  current_username = request.user.username
-
   if request.method == 'POST':
-    form = BusinessForm(request.POST, request.FILES)
+    form = NewBusinessForm(request.POST)
     if form.is_valid():
       business = form.save(commit=False)
-      business.owner = current_user
-      business.neighbourhood = current_username
+      business.neighbourhood = profile.neighbourhood
       business.save()
-    return redirect('welcome')
+    return redirect('business')
 
   else:
-    form = BusinessForm()
+    form = NewBusinessForm()
 
   return render(request, 'newbusiness.html',{'form':form,'profile':profile})
 
@@ -149,7 +146,7 @@ def profile(request, id):
   user = request.user
   
 
-  neighbourhoods = Neighbourhood.objects.filter(post=frank).order_by('-pub_date')
+  neighbourhoods = Neighbourhood.objects.filter(post=frank).order_by()
   neighbourhoodcount=neighbourhoods.count()
 
 
@@ -163,7 +160,7 @@ def neighbourhood(request, id):
   
   neighbourhoods = Neighbourhood.objects.get(pk=id)
 #   neighbourhoods = Neighbourhood.objects.get(pk=id)
-  comments = Comment.objects.filter(neighbourhood=id).order_by('-pub_date')
+  comments = Comment.objects.filter(neighbourhood=id).order_by()
 
   return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood,'comments':comments})
 
@@ -175,7 +172,7 @@ def post(request, id):
   profile = Profile.objects.get(user=frank)
   
   post = Post.objects.get(pk=id)
-  comments = Comment.objects.filter(post=id).order_by('-pub_date')
+  comments = Comment.objects.filter(post=id).order_by()
 
   return render(request, 'post.html',{'profile':profile,'post':post,'comments':comments})
 
@@ -219,7 +216,7 @@ def search_results(request):
     try:
       no_ws = search_term.strip()
       searched_business = Business.objects.filter(name__icontains = no_ws)
-      searched_businesses = searched_business.filter(neighborhood=profile.neighborhood)
+      searched_businesses = searched_business.filter(neighbourhood=profile.neighbourhood)
 
     except ObjectDoesNotExist:
       searched_businesses = []
@@ -269,9 +266,9 @@ def newpost(request):
       post = form.save(commit=False)
       post.poster = current_user
       post.postername = current_username
-      post.neighborhood = profile.neighborhood
+      post.neighbourhood = profile.neighbourhood
       post.save()
-    return redirect('homepage')
+    return redirect('welcome')
 
   else:
     form = NewPostForm()
@@ -301,3 +298,19 @@ def newcomment(request,id):
     form = NewCommentForm()
 
   return render(request, 'newcomment.html',{'form':form,'profile':profile,'id':id})
+
+
+@login_required(login_url='/accounts/login/')
+def business(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+  # return redirect('welcome')
+
+  try:
+    businesses = Business.objects.filter(neighbourhood=profile.neighbourhood)
+
+  except ObjectDoesNotExist:
+    businesses = []
+  # return redirect('welcome')
+
+  return render(request, 'business.html',{'businesses':businesses,'profile':profile})
