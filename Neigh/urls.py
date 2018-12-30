@@ -13,7 +13,7 @@ urlpatterns=[
     url(r'^neighbourhood/(\d+)', views.neighbourhood, name='neighbourhood'),
     url(r'^new/business/',views.newbusiness, name='newbusiness'), 
     url(r'^new/profile$',views.newprofile, name='newprofile'),
-    url(r'^new/comment/(\d+)',views.newcomment, name='newcomment'), 
+    url(r'^new/comment$',views.newcomment, name='newcomment'), 
     url(r'^new/post$',views.newpost, name='newpost'),
     url(r'^mail$',views.mail,name='mail'),
     url(r'^api/business/$', views.BusinessList.as_view()),

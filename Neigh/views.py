@@ -149,7 +149,7 @@ def profile(request, id):
   user = request.user
   
 
-  neighbourhoods = Neighbourhood.objects.filter(poster=frank).order_by('-pub_date')
+  neighbourhoods = Neighbourhood.objects.filter(post=frank).order_by('-pub_date')
   neighbourhoodcount=neighbourhoods.count()
 
 
