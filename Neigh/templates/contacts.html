@@ -10,7 +10,7 @@
 <br>
 {% if contacts %}
 <div class="row">
-{% for contact in contacts %}
+{% for contacts in contact %}
       <div class="col-sm-6" style="margin-bottom: 2em;">
         <div class="card bg-dark">
           <div class="card-body">
@@ -24,7 +24,7 @@
 </div>
 
 {% else %}
-<h4>No Contacts to Upto Now add one <a href="{% url 'newcontacts' %}">here</a></h4>
+<h4>No Contacts to Upto Now, add one <a href="{% url 'newcontacts' %}">here</a></h4>
 {% endif %}
 </div>
 {% endblock %}

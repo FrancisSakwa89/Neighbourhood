@@ -15,6 +15,7 @@
 
 <body>
   {% include 'navbar.html' %}
+  <div class="jumbotron">
 <div class="container">
 
     <div class="intro">
@@ -32,6 +33,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   {% bootstrap_javascript %} {% endblock %}
 </div>
+</div>
+<style>
+
+.container{
+    margin-right: 50%;
+    margin-left: 10%;
+}
+.jumbotron{
+    color: whitesmoke;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+
+}
+
+</style>
 </body>
 
 </html>
