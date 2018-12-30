@@ -203,11 +203,18 @@ def newprofile(request):
 
 
 @login_required(login_url='/accounts/login/')
-def contact(request):
+def contacts(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
 
-  return render(request, 'contacts.html', {'profile':profile})
+  try:
+    contacts = Contact.objects.filter(neighbourhood=profile.neighbourhood)
+
+  except ObjectDoesNotExist:
+    contacts = []
+
+  return render(request, 'contacts.html',{'contacts':contacts,'profile':profile})
+
 
 @login_required(login_url='/accounts/login/')
 def subscribe(request):
