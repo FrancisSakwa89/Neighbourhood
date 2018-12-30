@@ -21,6 +21,7 @@ urlpatterns=[
     url(r'^business$', views.business,name = 'business'),
     url(r'^myneighbourhood/', views.myneighbourhood, name='myneighbourhood'),
     url(r'^password/', views.password, name='password'),
+    url(r'^new/contacts/',views.newcontacts, name='newcontacts'), 
 
 
 ]    

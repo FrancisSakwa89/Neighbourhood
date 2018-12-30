@@ -33,4 +33,9 @@ class NewCommentForm(forms.ModelForm):
 class NewPostForm(forms.ModelForm):
   class Meta:
     model = Post
-    exclude = ['poste', 'pub_date']
+    exclude = ['poster', 'pub_date']
+
+class ContactForm(forms.ModelForm):
+  class Meta:
+    model = Contact
+    exclude = ['post','postername','pub_date']
