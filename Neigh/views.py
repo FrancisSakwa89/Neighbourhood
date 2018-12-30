@@ -107,6 +107,8 @@ def newneighbourhood(request):
 
   return render(request, 'newneigh.html',{'form':form,'profile':profile})
 
+
+
 # @login_required(login_url='/accounts/login/')
 # def newrating(request,id):
 #   frank = request.user.id
@@ -214,6 +216,30 @@ def contacts(request):
     contacts = []
 
   return render(request, 'contacts.html',{'contacts':contacts,'profile':profile})
+
+
+@login_required(login_url='/accounts/login/')
+def newcontacts(request):
+  frank = request.user.id
+  profile = Profile.objects.get(user=frank)
+
+  current_user = request.user
+  current_username = request.user.username
+
+  if request.method == 'POST':
+    form = ContactForm(request.POST, request.FILES)
+    if form.is_valid():
+      contacts = form.save(commit=False)
+      contacts.owner = current_user
+      contacts.contacts = current_username
+      contacts.save()
+    return redirect('welcome')
+
+  else:
+    form = ContactForm()
+
+  return render(request, 'newcontacts.html',{'form':form,'profile':profile})
+
 
 
 @login_required(login_url='/accounts/login/')
