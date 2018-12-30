@@ -14,7 +14,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import NeighbourhoodSerializer, ProfileSerializer
 from .forms import NeighLetterForm
-from .models import Profile, Post, Comment, Business, Neighbourhood
+from .models import Profile, Post, Comment, Business, Neighbourhood, Contact
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
