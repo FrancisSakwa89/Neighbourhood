@@ -8,10 +8,10 @@
 <hr>
 {% if profile.bio %}
 <div id='user-details'>
-    <p><img class="circular" src="{{profile.photo.url}}" alt="Avatar"><span class="repo-owner firstletter" style='padding:1.5em;'>{{user.username}}</span>
+    <p><img class="circular" src="{{profile.photo.url}}" alt="Avatar" style="border-radius: 50%;"><span class="repo-owner firstletter" style="padding:1.5em;font-size: 2em">{{user.username}}</span>
     </p>
     <p>
-      <span class='repo-owner' style=>Neighbourhoods: </span>{{neighbourhoodcount}}
+      <!-- <span class='repo-owner' style=>Neighbourhoods: </span>{{neighbourhoodcount}} -->
     </p>
 </div>
     {{profile.bio}}
@@ -27,7 +27,7 @@
     <br>
     <br>
   {% endif %}
-      <h4>Your neighbourhoods</h4>
+      <!-- <h4>Your neighbourhoods</h4>
       <p></p>
       {% if neighbourhoods %}
           {% for neighbourhood in neighbourhoods %}
@@ -48,7 +48,7 @@
       {% else %}
       <h4 style="text-align: center">No Neighbourhoods to show, Add one <a href="{% url 'newneighbourhood' %}">here</a>.</h4>
       {% endif %}
-      </div>
+      </div> -->
 
 
 {% endblock %}

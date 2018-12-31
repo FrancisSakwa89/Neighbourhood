@@ -11,16 +11,32 @@
   <div class="col-md-4 mx-auto">
       <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.name }}">
     <div class="card-body">
-      <h5 class="card-titile firstletter">{{neighbourhood.name}}</h5>
+      <h5 class="card-titile firstletter">{{neighbourhood.location}}</h5>
       <p class="card-text">
+          <p>{{neighbourhood.occupants_count}}</p>
         <p>{{neighbourhood.description}}</p>
         </p>
       </p>
-      <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.postername}}</p>
+      <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.email}}</p>
     </div>
   </div>
 
   <div class="card-letter" style="text-align:center">
+    <p></p>
+
+  <br>
+  <br>
+  {% for comment in comments %}
+  <div class="card text-white bg-secondary mb-3">
+      <div class="card-body firstletter" >
+          {{comment.comment}}
+        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{comment.postername}}</cite></footer>
+      </div>
+    </div>
+  <p></p>
+  {% endfor %}
+</div>
+
     <a href="{% url 'newneighbourhood' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a>   
 
     </div>

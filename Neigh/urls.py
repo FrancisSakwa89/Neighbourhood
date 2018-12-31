@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url
+from django.core.urlresolvers import reverse
 from . import views
 
 
@@ -13,10 +14,10 @@ urlpatterns=[
     url(r'^neighbourhood/(\d+)', views.neighbourhood, name='neighbourhood'),
     url(r'^new/business/',views.newbusiness, name='newbusiness'), 
     url(r'^new/profile$',views.newprofile, name='newprofile'),
-    url(r'^new/comment$',views.newcomment, name='newcomment'), 
+    url(r'^new/comment/(\d+)',views.newcomment, name='newcomment'),
     url(r'^new/post$',views.newpost, name='newpost'),
     url(r'^mail$',views.mail,name='mail'),
-    url(r'^api/business/$', views.BusinessList.as_view()),
+    # url(r'^api/business/$', views.BusinessList.as_view()),
     url(r'^subscribe/', views.subscribe, name='subscribe'),
     url(r'^business$', views.business,name = 'business'),
     url(r'^myneighbourhood/', views.myneighbourhood, name='myneighbourhood'),

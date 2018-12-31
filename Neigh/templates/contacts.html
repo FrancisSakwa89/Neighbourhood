@@ -11,12 +11,12 @@
 {% if contacts %}
 <div class="row">
 {% for contact in contacts %}
-      <div class="col-sm-6" style="margin-bottom: 2em;">
-        <div class="card bg-dark">
+      <div class="col-sm-4" style="margin-bottom: 2em;">
+        <div class="card bg-light">
           <div class="card-body">
-              <h5 class="card-title firstletter">{{contact.name}}</h5>
-            <p class="card-text"><a class='maillink' href="tel:{{profile.contact}}">{{contact.contact}}</a></p>
-            <p class="card-text"><a class='maillink' href="mailto:{{profile.contact}}">{{contact.email}}</a></p>
+              <h5 class="card-title firstletter" style="color:black">{{contact.name}}</h5>
+            <p class="card-text"><a class='maillink' href="tel:{{profile.contact}}" style="color:black">{{contact.contact}}</a></p>
+            <p class="card-text"><a class='maillink' href="mailto:{{profile.contact}}" style="color:black">{{contact.email}}</a></p>
           </div>
         </div>
       </div>

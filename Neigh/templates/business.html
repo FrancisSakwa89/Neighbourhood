@@ -11,11 +11,13 @@
 {% if businesses %}
 <div class="row">
 {% for business in businesses %}
-    <div class="col-sm-6" style="margin-bottom: 2em;">
+    <div class="col-sm-4" style="margin-bottom: 2em;">
       <div class="card bg-dark">
         <div class="card-body">
-          <h5 class="card-title firstletter">{{business.name}}</h5>
-          <p class="card-text"><a class='maillink' href="mailto:{{profile.contact}}">{{business.email}}</a></p>
+          <h5 class="card-title firstletter" style="color:whitesmoke">{{business.name}}</h5>
+          <p class="card-text"><a class='maillink' href="mailto:{{profile.contact}}" style="color:whitesmoke">{{business.email}}</a></p>
+          <p class="card-text"><a  style="color:whitesmoke">Neighbourhood: {{business.neighbourhood}}</a></p>
+
         </div>
       </div>
     </div>

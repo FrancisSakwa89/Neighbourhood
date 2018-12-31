@@ -75,7 +75,7 @@ def newbusiness(request):
     form = NewBusinessForm(request.POST)
     if form.is_valid():
       business = form.save(commit=False)
-      business.business = profile.business
+      business.neighbourhood = profile.neighbourhood
       business.save()
     return redirect('business')
 
@@ -162,9 +162,9 @@ def neighbourhood(request, id):
   
   neighbourhoods = Neighbourhood.objects.get(pk=id)
 #   neighbourhoods = Neighbourhood.objects.get(pk=id)
-  # comments = Comment.objects.filter(neighbourhood=id).order_by()
+  comments = Comment.objects.filter(neighbourhood=id).order_by()
 
-  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood})
+  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood,'comments':comments})
 
 
 
