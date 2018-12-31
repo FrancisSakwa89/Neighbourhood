@@ -12,6 +12,7 @@ class Neighbourhood(models.Model):
   location = models.CharField(max_length=60)
   occupants_count = models.PositiveIntegerField()
   email = models.EmailField(max_length=60,default='email')
+  description = models.TextField()
   # pub_date = models.DateTimeField(auto_now_add=True,default='dat')
 
 
