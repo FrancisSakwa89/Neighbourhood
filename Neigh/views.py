@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
-from .forms import NeighForm, NewBusinessForm, ProfileForm,NewCommentForm, ContactForm
+from .forms import NeighForm, NewBusinessForm, ProfileForm,NewCommentForm, ContactForm, NewPostForm
 from .models import Neighbourhood, Business, Profile,NeighLetterRecipients,Post,Comment
 from .email import send_welcome_email
 from django.db.models import Avg
