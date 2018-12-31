@@ -15,13 +15,13 @@
 
 <body>
   {% include 'navbar.html' %}
-<div class="container">
+<div class="jumbotron" style="background: linear-gradient(to right, #16222a, #3a6073);color:whitesmoke">
 
     <div class="intro">
-        <h2>New Post</h2>
+        <h2  style="margin-right:30%;margin-left:20%">New Post</h2>
       </div>
 <hr>
-  <form  action="{%url 'newpost'%}" method="post" enctype="multipart/form-data">
+  <form  action="{%url 'newpost'%}" method="post" enctype="multipart/form-data" style="margin-right:30%;margin-left:20%">
     {%csrf_token%}
 
     {% bootstrap_form form%}

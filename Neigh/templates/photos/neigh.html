@@ -16,7 +16,6 @@
           <p>{{neighbourhood.occupants_count}}</p>
         <p>{{neighbourhood.description}}</p>
         </p>
-      </p>
       <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.email}}</p>
     </div>
   </div>
@@ -43,10 +42,10 @@
   <p></p>
   {% endfor %}
 </div>
-
+<div class="well" style="text-align:center">
     <a href="{% url 'newneighbourhood' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a>   
     <h3> Add Posts<a href="{% url 'newpost' %}">here</a>.</h3>
-
+</div>
     </div>
     <br>
     <br>

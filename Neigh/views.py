@@ -274,7 +274,7 @@ def newpost(request):
       post.postername = current_username
       post.neighbourhood = profile.neighbourhood
       post.save()
-    return redirect('welcome')
+    return redirect('myneighbourhood')
 
   else:
     form = NewPostForm()

@@ -19,10 +19,10 @@
 <div class="container">
 
     <div class="intro">
-        <h2>New contacts</h2>
+        <h2  style="margin-right:30%;margin-left:20%">New contacts</h2>
       </div>
 <hr>
-  <form  action="{%url 'newcontacts'%}" method="post" enctype="multipart/form-data">
+  <form  action="{%url 'newcontacts'%}" method="post" enctype="multipart/form-data"  style="margin-right:30%;margin-left:20%">
     {%csrf_token%}
 
     {% bootstrap_form form%}
