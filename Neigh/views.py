@@ -75,7 +75,7 @@ def newbusiness(request):
     form = NewBusinessForm(request.POST)
     if form.is_valid():
       business = form.save(commit=False)
-      business.neighbourhood = profile.neighbourhood
+      business.business = profile.business
       business.save()
     return redirect('business')
 

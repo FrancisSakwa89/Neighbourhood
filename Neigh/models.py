@@ -5,6 +5,7 @@ from django.dispatch import receiver
 
 
 # Create your models here.
+
 class Neighbourhood(models.Model):
   name = models.CharField(max_length=60,default='name')
   image = models.ImageField(upload_to = 'photos/')
@@ -14,10 +15,32 @@ class Neighbourhood(models.Model):
   # pub_date = models.DateTimeField(auto_now_add=True,default='dat')
 
 
+  def __str__(self):
+    return self.name
+  class Meta:
+    ordering = ['name']
+
   def save_neighbourhood(self):
     self.save()
 
   def delete_neighbourhood(self):
+    self.delete()
+
+
+class Business(models.Model):
+  name = models.CharField(max_length=60)
+  email = models.EmailField()
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.name
+  class Meta:
+    ordering = ['name']
+
+  def save_business(self):
+    self.save()
+
+  def delete_business(self):
     self.delete()
 
 
@@ -49,21 +72,21 @@ class Profile(models.Model):
 
 
 
-class Business(models.Model):
-  name = models.CharField(max_length=60)
-  email = models.EmailField()
-  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+# class Business(models.Model):
+#   name = models.CharField(max_length=60)
+#   email = models.EmailField()
+#   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
 
-  def __str__(self):
-    return self.name
-  class Meta:
-    ordering = ['name']
+#   def __str__(self):
+#     return self.name
+#   class Meta:
+#     ordering = ['name']
 
-  def save_business(self):
-    self.save()
+#   def save_business(self):
+#     self.save()
 
-  def delete_business(self):
-    self.delete()
+#   def delete_business(self):
+#     self.delete()
 
 
 class NeighLetterRecipients(models.Model):

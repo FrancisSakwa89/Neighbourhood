@@ -9,7 +9,7 @@ class NeighForm(forms.ModelForm):
 
 class NewBusinessForm(forms.ModelForm):
   class Meta:
-    model = Neighbourhood
+    model = Business
     exclude = ['User', 'pub_date']
 
 
