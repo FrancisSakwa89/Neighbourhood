@@ -19,7 +19,9 @@
               <br>
                 <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
                 <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
+                <div class="animated infinite flash">
                 <p class="card-text"><a href="{% url 'neighbourhood' neighbourhood.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+                </div>
                 <br>
             </div>
             <br>
