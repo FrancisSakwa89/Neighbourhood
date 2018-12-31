@@ -162,9 +162,9 @@ def neighbourhood(request, id):
   
   neighbourhoods = Neighbourhood.objects.get(pk=id)
 #   neighbourhoods = Neighbourhood.objects.get(pk=id)
-  comments = Comment.objects.filter(neighbourhood=id).order_by()
+  # comments = Comment.objects.filter(neighbourhood=id).order_by()
 
-  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood,'comments':comments})
+  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood})
 
 
 

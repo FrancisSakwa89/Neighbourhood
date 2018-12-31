@@ -21,8 +21,16 @@
     </div>
   </div>
 
-  <div class="card-letter" style="text-align:center">
-    <p></p>
+  <h2 class="firstletter">{{post.name}}</h2>
+    </div>
+  <hr>
+  <div class="card bg-dark">
+      <div class="card-body">
+        {{post.post}}
+      </div>
+    </div>
+  <p></p>
+  <a href="{% url 'newcomment' post.id %}"><button type="button" class="btn btn-primary">Comment</button></a>
 
   <br>
   <br>

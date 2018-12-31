@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^logout/$', views.logout, {"next_page": '/'}), 
     url(r'^admin/', admin.site.urls),
     url(r'',include('Neigh.urls')),
+    # url(r'^profile/(\d+)', views.profile, name='profile'),
 ]
