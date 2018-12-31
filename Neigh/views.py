@@ -100,7 +100,7 @@ def newneighbourhood(request):
       neighbourhood.owner = current_user
       neighbourhood.neighbourhood = current_username
       neighbourhood.save()
-    return redirect('welcome')
+    return redirect('myneighbourhood')
 
   else:
     form = NeighForm()
