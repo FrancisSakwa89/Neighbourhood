@@ -23,7 +23,7 @@ urlpatterns=[
     url(r'^myneighbourhood/', views.myneighbourhood, name='myneighbourhood'),
     url(r'^password/', views.password, name='password'),
     url(r'^new/contacts/',views.newcontacts, name='newcontacts'), 
-    url(r'^post/(\d+)', views.post, name='post'),
+    url(r'^post$', views.post, name='post'),
 
 
 ]    
