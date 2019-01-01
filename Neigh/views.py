@@ -176,7 +176,7 @@ def post(request, id):
   post = Post.objects.get(pk=id)
   comments = Comment.objects.filter(post=id).order_by()
 
-  return render(request, 'post.html',{'profile':profile,'post':post,'comments':comments})
+  return render(request, 'photos/post.html',{'profile':profile,'post':post,'comments':comments})
 
 
 
@@ -322,7 +322,7 @@ def business(request):
   return render(request, 'business.html',{'businesses':businesses,'profile':profile})
 
 @login_required(login_url='/accounts/login/')
-def search_results(request):
+def search(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
 
@@ -343,7 +343,7 @@ def search_results(request):
     return render(request, 'search.html',{'message':message ,'title':title, 'searched_businesses':searched_businesses,'profile':profile})
 
   else:
-    message = 'You haven\'t searched for any business'
+    message = 'You haven\'t searched for any users'
     
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})

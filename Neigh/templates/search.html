@@ -9,9 +9,9 @@
             <hr>
         
 {% if searched_businesses %}
-    <h5>Found {{ searched_businesses|length }} businesses for the searched term '{{message}}'</h5>
+    <h5>Found {{ searched_businesses|length }} business(s) for the searched term '{{message}}'</h5>
 {% else %}
-    <h5> Found 0 businesses for the search term '{{message}}'</h5>
+    <h5> Found 0 business(s) for the search term '{{message}}'</h5>
 {% endif %}
 
 <br>
@@ -19,10 +19,10 @@
 {% if searched_businesses %}
 <div class="row">
         {% for business in searched_businesses %}
-            <div class="col-sm-6" style="margin-bottom: 2em;">
-              <div class="card bg-dark">
+            <div class="col-sm-4" style="margin-bottom: 2em;">
+              <div class="card bg-">
                 <div class="card-body">
-                  <h5 class="card-title firstletter">{{business.name}}</h5>
+                  <h5 class="card-title firstletter" style="color:black">{{business.name}}</h5>
                   <p class="card-text"><a class='maillink' href="mailto:{{profile.contact}}">{{business.email}}</a></p>
                 </div>
               </div>

@@ -8,7 +8,7 @@ from . import views
 urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
     url(r'^contacts/', views.contacts, name='contacts'),
-    url(r'^search_results/', views.search_results, name='search_results'),
+    url(r'^search/', views.search,name = 'search'),
     url(r'^new/neighbourhood$',views.newneighbourhood, name='newneighbourhood'),
     url(r'^profile/(\d+)', views.profile, name='profile'),
     url(r'^neighbourhood/(\d+)', views.neighbourhood, name='neighbourhood'),
@@ -23,6 +23,7 @@ urlpatterns=[
     url(r'^myneighbourhood/', views.myneighbourhood, name='myneighbourhood'),
     url(r'^password/', views.password, name='password'),
     url(r'^new/contacts/',views.newcontacts, name='newcontacts'), 
+    url(r'^post/(\d+)', views.post, name='post'),
 
 
 ]    
