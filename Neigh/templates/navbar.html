@@ -12,8 +12,7 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="false">More Apps</a>
           <ul class="dropdown-menu" role="menu" style="color:black"><li>              
-          <li><a class="nav-link" href="/accounts/login">Login</a></li>
-          <li><a class="nav-link" href="/accounts/register">Register</a></li>
+          
           <li><a class="nav-link" href="{% url 'newneighbourhood' %}">Add Neighbourhood</a></li>
           <li><a class="nav-link" href="{% url 'newprofile' %}">Add Profile</a></li>
           <li><a class="nav-link" href="{% url 'contacts' %}">Contacts</a></li>
@@ -21,13 +20,10 @@
           <li><a class="nav-link" href="{% url 'newbusiness' %}">Add Biz</a></li>
           <li><a class="nav-link" href="{% url 'newcontacts' %}">Add Contacts</a></li>
           <li><a class="nav-link" href="{% url 'myneighbourhood' %}">My Neighbourhoods</a></li>
-          <li><a class="nav-link" href="{% url 'password' %}">Forgot Password</a></li>
           <li><a class="nav-link" href="{% url 'business' %}">Businessess</a>
-  
-            </li>
           </ul>
-
-          
+          </li>
+      
           {% if user.is_authenticated %}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="false">Account
@@ -43,6 +39,10 @@
               <li>
                 <a href="/logout">Logout</a>
               </li>
+              <li><a class="nav-link" href="/accounts/login">Login</a></li>
+          <li><a class="nav-link" href="/accounts/register">Register</a></li>
+          <li><a class="nav-link" href="{% url 'password' %}">Forgot Password</a></li>
+
             </ul>
           </li>
         </ul>

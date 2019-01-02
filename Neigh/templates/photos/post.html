@@ -1,30 +1,31 @@
 {% extends "base.html" %}
-{% block content %}
 
+{% block content %}
 <div class="container">
 
-  <div class="intro">
+  <div class="intro" style="text-align:center">
     <h2>Posts</h2>
   </div>
-<hr>
-<br>
+
 {% if posts %}
+<div class="row">
 {% for post in posts %}
-  <div class="card bg-dark text-white">
-    <h5 class="card-header">{{post.name}}</h5>
-    <div class="card-body">
+<div class="col-sm-4" style="margin-bottom: 2em;">
+    <div class="card bg-dark">
+      <div class="card-body">    
+        <h5 class="card-header">{{post.name}}</h5>
         <p class="card-text firstletter">{{ post.post | truncatechars:450 }}</p>
-        <p class="card-text"><a href="{% url 'post' post.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
     </div>
   </div>
+</div>
   <br>
 {% endfor %}
-
-
-{% else %}
-<h4>No Posts to show, Add one <a href="{% url 'newpost' %}">here</a>.</h4>
 {% endif %}
 </div>
+<h4 style="text-align:center">Add Posts <a href="{% url 'newpost' %}">here</a>.</h4>
+
+<br>
+  <br>
   {% for comment in comments %}
   <div class="card text-white bg-secondary mb-3">
       <div class="card-body firstletter" >
