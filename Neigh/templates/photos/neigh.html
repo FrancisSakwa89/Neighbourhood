@@ -3,15 +3,23 @@
 {% block content %}
 <div class="container">
 
-    <div class="intro">
-      <h2 class="firstletter">{{neighbourhood.name}}</h2>
-    </div>
+    <div class="col-md-4 mx-auto">
+        <h2 class="firstletter">{{neighbourhood.name}}</h2>
   <hr>
-  <div class="card bg-dark">
-      <div class="card-body">
-        {{neighbourhood.neighbourhood}}
-      </div>
+  
+  <div class="col-md-4 mx-auto">
+      <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.name }}">
+    <div class="card-body">
+      <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
+      <p class="card-text">
+        <p>{{neighbourhood.location}}</p>
+        <p>{{neighbourhood.description}}</p>
+        <p>{{neighbourhood.occupants_count}}</p>
+
+        </p>
+      <p class="card-text" style="color: whitesmoke">Owner: {{neighbourhood.email}}</p>
     </div>
+  </div>
   <p></p>
 
   <br>

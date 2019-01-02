@@ -14,7 +14,9 @@
     <div class="card bg-dark">
       <div class="card-body">    
         <h5 class="card-header">{{post.name}}</h5>
-        <p class="card-text firstletter">{{ post.post | truncatechars:450 }}</p>
+        <h5 class="card-text firstletter">{{ post.post | truncatechars:450 }}</h5>
+        <p style="font-style:italic;text-decoration:underline">Posted by: {{post.postername}}</p>
+
     </div>
   </div>
 </div>
