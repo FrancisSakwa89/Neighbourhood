@@ -22,7 +22,6 @@ def welcome(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
 
-  # neighbourhoods = Neighbourhood.objects.all().order_by()
 
   return render(request, 'index.html',{'profile':profile})
 
@@ -33,11 +32,6 @@ def myneighbourhood(request):
   profile = Profile.objects.get(user=id)
   neighbourhoods = Neighbourhood.objects.all().order_by()
 
-#   try:
-#     posts = Post.objects.filter(neighbourhood=profile.neighbourhood).order_by()
-
-#   except ObjectDoesNotExist:
-#     posts = []
 
   return render(request, 'myneigh.html',{'profile':profile,'neighbourhoods':neighbourhoods})
 
@@ -45,8 +39,6 @@ def myneighbourhood(request):
 def password(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
-
-  # neighbourhoods = Neighbourhood.objects.all().order_by()
 
   return render(request, 'password.html',{'profile':profile})
 
@@ -104,41 +96,13 @@ def newneighbourhood(request):
 
   else:
     form = NeighForm()
-
+# current_user = request.user
+  # current_username = request.user.username
+  
   return render(request, 'newneigh.html',{'form':form,'profile':profile})
 
 
 
-# @login_required(login_url='/accounts/login/')
-# def newrating(request,id):
-#   frank = request.user.id
-#   profile = Profile.objects.get(user=frank)
-#   id = id
-
-#   current_username = request.user.username
-
-#   if request.method == 'POST':
-#     form = RatingForm(request.POST)
-#     if form.is_valid():
-#       rating = form.save(commit=False)
-
-#       design_rating = form.cleaned_data['design']
-#       usability_rating = form.cleaned_data['usability']
-#       content_rating = form.cleaned_data['content']
-
-#       avg = ((design_rating + usability_rating + content_rating)/3)
-
-#       rating.average = avg
-#       rating.ownername = current_username
-#       rating.neighbourhood = neighbourhood.objects.get(pk=id)
-
-#       rating.save()
-#     return redirect('neighbourhood',id)
-
-#   else:
-#     form = RatingForm()
-
-#   return render(request, 'rating.html',{'form':form,'profile':profile,'id':id})
 
 @login_required(login_url='/accounts/login/')
 def profile(request, id):
@@ -161,12 +125,9 @@ def neighbourhood(request, id):
   profile = Profile.objects.get(user=frank)
   
   neighbourhoods = Neighbourhood.objects.get(pk=id)
-#   neighbourhoods = Neighbourhood.objects.get(pk=id)
-  # comments = Comment.objects.filter(neighbourhood=id).order_by()
+  comments = Comment.objects.filter(neighbourhood=id).order_by()
 
-  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood})
-
-
+  return render(request, 'photos/neigh.html',{'profile':profile,'neighbourhood':neighbourhood,'comments':comments})
 
 @login_required(login_url='/accounts/login/')
 def post(request, id):
@@ -178,6 +139,14 @@ def post(request, id):
 
   return render(request, 'photos/post.html',{'profile':profile,'post':post,'comments':comments})
 
+@login_required(login_url='/accounts/login/')
+def mypost(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+  posts = Post.objects.all().order_by()
+
+
+  return render(request, 'photos/post.html',{'profile':profile,'posts':posts})
 
 
 @login_required(login_url='/accounts/login/')
@@ -274,7 +243,7 @@ def newpost(request):
       post.postername = current_username
       post.neighbourhood = profile.neighbourhood
       post.save()
-    return redirect('myneighbourhood')
+    return redirect('mypost')
 
   else:
     form = NewPostForm()
@@ -288,7 +257,7 @@ def newpost(request):
 def newcomment(request,id):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
-  id = id
+  idd = id
 
   current_username = request.user.username
   if request.method == 'POST':
@@ -296,14 +265,14 @@ def newcomment(request,id):
     if form.is_valid():
       comment = form.save(commit=False)
       comment.postername = current_username
-      comment.neighbourhood = neighbourhood.objects.get(pk=id)
+      comment.neighbourhood = Neighbourhood.objects.get(pk=id)
       comment.save()
     return redirect('neighbourhood',id)
 
   else:
     form = NewCommentForm()
 
-  return render(request, 'newcomment.html',{'form':form,'profile':profile,'id':id})
+  return render(request, 'newcomment.html',{'form':form,'profile':profile,'idd':idd})
 
 
 @login_required(login_url='/accounts/login/')

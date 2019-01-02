@@ -3,41 +3,21 @@
 {% block content %}
 <div class="container">
 
-    <div class="col-md-4 mx-auto">
-        <h2 class="firstletter">{{neighbourhood.id}}</h2>
+    <div class="intro">
+      <h2 class="firstletter">{{neighbourhood.name}}</h2>
     </div>
   <hr>
-  
-  <div class="col-md-4 mx-auto">
-      <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.name }}">
-    <div class="card-body">
-      <h5 class="card-titile firstletter">{{neighbourhood.location}}</h5>
-      <p class="card-text">
-          <p>{{neighbourhood.occupants_count}}</p>
-        <p>{{neighbourhood.description}}</p>
-        </p>
-      <p class="card-text" style="color: whitesmoke">neighbourhood by: {{neighbourhood.email}}</p>
-    </div>
-  </div>
-
-  
-  <h4>View Posts <a href="{% url 'post' %}">here</a>.</h4>
-  
-
-
-  <br>
-  <br>
-  {% for comment in comments %}
-  <div class="card text-white bg-secondary mb-3">
-      <div class="card-body firstletter" >
-          {{comment.comment}}
-        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{comment.postername}}</cite></footer>
+  <div class="card bg-dark">
+      <div class="card-body">
+        {{neighbourhood.neighbourhood}}
       </div>
     </div>
   <p></p>
-  {% endfor %}
-</div>
+
+  <br>
+
 <div class="well" style="text-align:center">
+  <a href="{% url 'mypost' %}"><button type="button" class="btn btn-info">View Posts</button></a>   
     <a href="{% url 'newneighbourhood' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a>   
     <!-- <h3> Add Posts<a href="{% url 'newpost' %}">here</a>.</h3> -->
 </div>
