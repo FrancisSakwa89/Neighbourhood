@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+  {% if comments%}
+  <div class="row">
+  {% for comment in comments %}
+  <div class="col-md-d">
+  <div class="card text-white bg-secondary mb-3">
+      <div class="card-body firstletter" >
+          {{comment.comment}}
+        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{comment.postername}}</cite></footer>
+      </div>
+    </div>
+  <p></p>
+</div>
+  {% endfor %}
+</div>
+{%else%}
+<div class="container" style="text-align:center">
+<h3>There are no comments</h3>
+<p>Make new comments now</p>
+<a href="{% url 'newcomment'%}"><button type="button" class="btn btn-primary">Comment</button></a>
+</div>
+{% endif %}
+{% endblock%}

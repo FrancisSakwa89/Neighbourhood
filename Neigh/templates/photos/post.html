@@ -16,6 +16,7 @@
         <h5 class="card-header">{{post.name}}</h5>
         <h5 class="card-text firstletter">{{ post.post | truncatechars:450 }}</h5>
         <p style="font-style:italic;text-decoration:underline">Posted by: {{post.postername}}</p>
+        <a href="{% url 'comments' %}"><button type="button" class="btn btn-primary">View Comments</button></a>
 
     </div>
   </div>
@@ -24,19 +25,9 @@
 {% endfor %}
 {% endif %}
 </div>
+
 <h4 style="text-align:center">Add Posts <a href="{% url 'newpost' %}">here</a>.</h4>
 
 <br>
   <br>
-  {% for comment in comments %}
-  <div class="card text-white bg-secondary mb-3">
-      <div class="card-body firstletter" >
-          {{comment.comment}}
-        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{comment.postername}}</cite></footer>
-      </div>
-    </div>
-  <p></p>
-  {% endfor %}
-</div>
-
 {% endblock %}

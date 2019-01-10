@@ -144,9 +144,9 @@ def mypost(request):
   id = request.user.id
   profile = Profile.objects.get(user=id)
   posts = Post.objects.all().order_by()
+  comments = Comment.objects.filter(id=id).order_by()
 
-
-  return render(request, 'photos/post.html',{'profile':profile,'posts':posts})
+  return render(request, 'photos/post.html',{'profile':profile,'posts':posts,'comments':comments})
 
 
 @login_required(login_url='/accounts/login/')
@@ -254,25 +254,23 @@ def newpost(request):
 
 
 @login_required(login_url='/accounts/login/')
-def newcomment(request,id):
+def newcomment(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
-  idd = id
-
   current_username = request.user.username
   if request.method == 'POST':
     form = NewCommentForm(request.POST)
     if form.is_valid():
       comment = form.save(commit=False)
       comment.postername = current_username
-      comment.neighbourhood = Neighbourhood.objects.get(pk=id)
+      comment.post = Post.objects.get(pk=id)
       comment.save()
-    return redirect('neighbourhood',id)
+    return redirect('welcome')
 
   else:
     form = NewCommentForm()
 
-  return render(request, 'newcomment.html',{'form':form,'profile':profile,'idd':idd})
+  return render(request, 'newcomment.html',{'form':form,'profile':profile})
 
 
 @login_required(login_url='/accounts/login/')
@@ -316,3 +314,12 @@ def search(request):
     
     title = 'Search Error'
     return render(request,'search.html',{'message':message,'title':title,'profile':profile})
+
+@login_required(login_url='/accounts/login/')
+def comments(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+  comments = Comment.objects.filter(id=id).order_by()
+  return render(request, 'comment.html',{'profile':profile,'comments':comments})
+

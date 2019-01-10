@@ -13,8 +13,9 @@
             </div>
           <br>
           {% if neighbourhoods %}
+           <div class="row">
           {% for neighbourhood in neighbourhoods %}
-          <div class="col-md-4 mx-auto" style="color:white">
+          <div class="col-md-4" style="color:white">
               <img class='streamimg' src="{{neighbourhood.image.url}}" height="300px" width="95%"  alt="{{ neighbourhood.name }}"></img>
               <br>
                 <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
@@ -26,6 +27,7 @@
             </div>
             <br>
           {% endfor %}
+           </div>
           {% else %}
           <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
           {% endif %}
