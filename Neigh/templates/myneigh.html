@@ -1,35 +1,39 @@
 {% extends "base.html" %} {% load bootstrap4 %} {% block content %}
 
-<div class="container">
+<link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Spicy+Rice|Teko" rel="stylesheet">
+<div class="jumbotron">
         <style>
             
-            .container{
+            .jumbotron{
                 background: linear-gradient(to right, #16222a, #3a6073);
                 background-size: cover;
+                /* font-family: 'Luckiest Guy'; */
             }
             </style>
     
               <h2 style="color: white;text-align: center;font-family: 'Lobster', cursive;">Posted neighbourhoods</h2>
-            </div>
-          <br>
-          {% if neighbourhoods %}
-           <div class="row">
-          {% for neighbourhood in neighbourhoods %}
-          <div class="col-md-4" style="color:white">
-              <img class='streamimg' src="{{neighbourhood.image.url}}" height="300px" width="95%"  alt="{{ neighbourhood.name }}"></img>
               <br>
-                <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
-                <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
-                <div class="animated infinite flash">
-                <p class="card-text"><a href="{% url 'neighbourhood' neighbourhood.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+              {% if neighbourhoods %}
+              <div class="row">
+                {% for neighbourhood in neighbourhoods %}
+                <div class="col-md-4" style="color:white">
+                    <img class='streamimg' src="{{neighbourhood.image.url}}" height="300px" width="95%"  alt="{{ neighbourhood.name }}"></img>
+                    <br>
+                    <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
+                    <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
+                    <h5>Occupants: {{neighbourhood.occupants_count}} people</h5>
+                    <div class="animated flash">
+                      <p class="card-text"><a href="{% url 'neighbourhood' neighbourhood.id %}"><button type="button" class="btn btn-primary">View</button></a></p>
+                    </div>
+                    <br>
+                  </div>
+                  <br>
+                  {% endfor %}
                 </div>
-                <br>
+                {% else %}
+                <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
+                {% endif %}
+              </div>
             </div>
-            <br>
-          {% endfor %}
-           </div>
-          {% else %}
-          <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
-          {% endif %}
-          </div>
+            </div>
           {% endblock %}

@@ -16,7 +16,7 @@
         <h5 class="card-header">{{post.name}}</h5>
         <h5 class="card-text firstletter">{{ post.post | truncatechars:450 }}</h5>
         <p style="font-style:italic;text-decoration:underline">Posted by: {{post.postername}}</p>
-        <a href="{% url 'comments' %}"><button type="button" class="btn btn-primary">View Comments</button></a>
+        <a href="{% url 'comments' %}"><button type="button" class="btn btn-success">View Comments</button></a>
 
     </div>
   </div>

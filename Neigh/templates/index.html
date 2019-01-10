@@ -42,7 +42,7 @@
                 <div class="view view-cascade overlay wow fadeIn">
                     <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80" class="img-fluid" width="100%" height="10%">
                     <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
+                        <div class="mask rgba-black-slight"></div>
                     </a>
                 </div>
                 <!--/Card image-->
@@ -59,7 +59,6 @@
                         <a href="{% url 'newneighbourhood' %}" class="btn btn-primary btn-lg">Add Hoods</a>
                         <a href="{% url 'business' %}" class="btn btn-primary btn-lg">Businessess</a>
                         <a href="{% url 'contacts' %}" class="btn btn-primary btn-lg">Contacts</a>
-                        <!-- <a href="{% url 'mypost' %}" class="btn btn-primary btn-lg">Posts</a> -->
 
 
                 </div>
@@ -75,6 +74,7 @@
     <!--/Main layout-->
 
     <!--Footer-->
+    <div class="jumbotron" style="background: linear-gradient(to right, #16222a, #3a6073);">
     <footer class="page-footer text-center text-md-left pt-4">
 
         <!--Footer Links-->
@@ -91,7 +91,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4">Add Hoods</h5>
                     <ul class="list-unstyled">
-                        <li><a href="{% url 'newneighbourhood' %}" style="color:green">Add Neighbourhood</a></li>
+                        <li><a href="{% url 'newneighbourhood' %}" style="color:white">Add Neighbourhood</a></li>
                         
                     </ul>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4">Neighbourhoods</h5>
                     <ul class="list-unstyled">
-                        <li><a  href="{% url 'myneighbourhood' %}" style="color:green">My Neighbourhoods</a></li>
+                        <li><a  href="{% url 'myneighbourhood' %}" style="color:white">My Neighbourhoods</a></li>
                         
                     </ul>
                 </div>
@@ -115,7 +115,7 @@
                 <div class="col-md-2 mx-auto">
                     <h5 class="text-uppercase font-weight-bold mb-4" style="color:white">Profile</h5>
                     <ul class="list-unstyled">
-                        <li><a class="nav-link" href="{% url 'profile' profile.id %}" style="color:green">Profile</a></li>
+                        <li><a class="nav-link" href="{% url 'profile' profile.id %}" style="color:white">Profile</a></li>
 
                     </ul>
                 </div>
@@ -128,17 +128,7 @@
         <hr>
 
         <!--Call to action-->
-        <div class="call-to-action text-center my-4">
-            <ul class="list-unstyled list-inline">
-                <li class="list-inline-item">
-                    <h5 style="color:white">Register for free</h5>
-                </li>
-                <li class="list-inline-item"><a href="/accounts/register/" class="btn btn-primary">Sign up!</a></li>
-            </ul>
-        </div>
-        <!--/.Call to action-->
-
-        <hr>
+       
 
         <!--Social buttons-->
         <div class="social-section text-center">
@@ -154,7 +144,7 @@
 
         <!--Copyright-->
         <div class="footer-copyright py-3 text-center">
-            <div class="container-fluid">
+            <div class="container-fluid" style="color:white">
                 © 2018 Copyright: <a href="http://github.com/FrancisSakwa89" style="color:white"> Francis Sakwa </a>
 
             </div>
@@ -162,6 +152,7 @@
         <!--/.Copyright-->
 
     </footer>
+    </div>
     <!--/.Footer-->
 
     <!-- SCRIPTS -->

@@ -44,6 +44,7 @@ def password(request):
 
 
 
+
 class BusinessList(APIView):
   def get(self, request, format=None):
     all_neighbourhoods = neighbourhood.objects.all()
@@ -257,6 +258,7 @@ def newpost(request):
 def newcomment(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
+  idd = id
   current_username = request.user.username
   if request.method == 'POST':
     form = NewCommentForm(request.POST)
@@ -265,12 +267,12 @@ def newcomment(request):
       comment.postername = current_username
       comment.post = Post.objects.get(pk=id)
       comment.save()
-    return redirect('welcome')
+    return redirect('post',id)
 
   else:
     form = NewCommentForm()
 
-  return render(request, 'newcomment.html',{'form':form,'profile':profile})
+  return render(request, 'newcomment.html',{'form':form,'profile':profile,'idd':idd})
 
 
 @login_required(login_url='/accounts/login/')
@@ -317,9 +319,8 @@ def search(request):
 
 @login_required(login_url='/accounts/login/')
 def comments(request):
-  id = request.user.id
-  profile = Profile.objects.get(user=id)
+  frank = request.user
 
-  comments = Comment.objects.filter(id=id).order_by()
-  return render(request, 'comment.html',{'profile':profile,'comments':comments})
+  comments = Comment.objects.all()
+  return render(request, 'comment.html',{'profile':frank,'comments':comments})
 

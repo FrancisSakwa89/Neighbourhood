@@ -1,11 +1,7 @@
 {%extends "registration/base.html"%} {% load bootstrap4 %} {% block content %}
-<div class="container">
-        <style>
-                .container{
-                    background: linear-gradient(to right, #16222a, #3a6073);
-                    background-size: cover;
-                }
-        </style>
+<hr>
+<div class="card bg-dark text-white" style="margin-left:20%;margin-right:20%">
+       
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
@@ -14,7 +10,7 @@
       <p style="color:white"> It seeems Your password or Username is incorrect </p>
       {% endif %}
 
-      <div class="panel panel-default" style="background: linear-gradient(to right, #141e30, #243b55); color: white">
+      <div class="panel panel-default">
 
         <div class="panel-heading">
           <h3 class="text-center">Sign In</h3>
@@ -29,12 +25,15 @@
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
-            <p> Don't have an account? <a href="/accounts/register">Register here</a>
-                <p>Did you forget password ? <a href="/accounts/password/change">Change Password</a>
+            <p> Don't have an account? <a href="/accounts/register">Register</a>
+                <p>Admin Password? <a href="/accounts/password/change">Change Password</a>
                     <p>Homepage <a href="{% url 'welcome' %}">Home</a></p>
           </form>
 
         </div>
 
+      </div>
+      </div>
+      </div>
       </div>
       {% endblock %}

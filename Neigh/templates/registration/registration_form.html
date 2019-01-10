@@ -1,11 +1,7 @@
 {%extends "registration/base.html"%} {% load bootstrap4 %} {% block content %}
+<hr>
 <div class="container">
-  <style>
-                .container{
-                    background: linear-gradient(to right, #16222a, #3a6073);
-                    background-size: cover;
-                }
-        </style>
+  <div class="card bg-dark text-white">
   <div class="row">
     <!-- Empty div -->
     <div class="col-md-4"></div>
@@ -14,7 +10,7 @@
       <p> Some Information Might be Incorrect </p>
       {% endif %}
 
-      <div class="panel panel-default" style="background: linear-gradient(to right, #141e30, #243b55); color: white;">
+      <div class="panel panel-default">
 
         <div class="panel-heading" >
           <h3 class="text-center">Sign Up</h3>
@@ -41,5 +37,6 @@
     <div class="col-md-4"></div>
   </div>
 </div>
-
+</div>
+</div>
 {% endblock %}

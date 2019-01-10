@@ -3,23 +3,31 @@
 {% block content %}
 
 <br>
-  {% if comments%}
-  <div class="row">
-  {% for comment in comments %}
-  <div class="col-md-d">
-  <div class="card text-white bg-secondary mb-3">
-      <div class="card-body firstletter" >
-          {{comment.comment}}
-        <footer class="blockquote-footer" style="color:white;"><cite title="Source Title">{{comment.postername}}</cite></footer>
-      </div>
+<h5>User comments</h5>
+{% if comments %}
+<div class="row">
+{% for comments in comments %}
+<div class="col-md-4">
+<div class="card text-white bg-dark text-white mb-3">
+    <div class="col-md-4">
+        <h5 class="card-header">{{comment.comment}}</h5>
+        <h5 class="card-text firstletter">{{ comment.neighbourhood}}</h5>
+        <p style="font-style:italic;text-decoration:underline">Posted by: {{comment.postername}}</p>      
+        <footer class="blockquote-footer" style="color:white;font-weight:bold"><cite name="Source name">Commented On: {{comment.pub_date}}</cite></footer>
     </div>
-  <p></p>
+  </div>
 </div>
-  {% endfor %}
+
+{% endfor %}
 </div>
+<div class="container" style="text-align:center">
+    <h3>Make new comments now</h3>
+    <a href="{% url 'newcomment'%}"><button type="button" class="btn btn-primary">Comment</button></a>
+    </div>
+
 {%else%}
 <div class="container" style="text-align:center">
-<h3>There are no comments</h3>
+<h3>There are no comments??</h3>
 <p>Make new comments now</p>
 <a href="{% url 'newcomment'%}"><button type="button" class="btn btn-primary">Comment</button></a>
 </div>

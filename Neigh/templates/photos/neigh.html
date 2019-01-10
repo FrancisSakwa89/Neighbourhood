@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<!-- <div class="jumbotron" style="background-image:url('https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80');background-size:cover"> -->
 
     <div class="col-md-4 mx-auto">
         <h2 class="firstletter">{{neighbourhood.name}}</h2>
@@ -26,47 +26,20 @@
 
 <div class="well" style="text-align:center">
   <a href="{% url 'mypost' %}"><button type="button" class="btn btn-info">View Posts</button></a>   
-    <a href="{% url 'newneighbourhood' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a>   
+    <a href="{% url 'newneighbourhood' %}"><button type="button" class="btn btn-info">Update Neighbourhhod</button></a> 
+    <br>
+    
     <!-- <h3> Add Posts<a href="{% url 'newpost' %}">here</a>.</h3> -->
-</div>
-    </div>
-    <br>
-    <br>
-  
-    <!-- {% if comments%}
-    <div class="col-md-4 mx-auto">
-        <br>
-  
-    <h5>User comments</h5>
-    {% for comment in comments %}
-    <div class="card text-white bg-primary mb-3">
-        <div class="col-md-4 mx-auto">
-            <p>{{comment.comment}}</p>
-          <footer class="blockquote-footer" style="color:black;font-weight:bold"><cite name="Source name">Comment By: {{comment.postername}}</cite></footer>
-        </div>
+  </div>
+  <hr>
+  <div class="well" style="text-align:center">
+        <p>
+        <a href="{% url 'business' %}"><button type="button" class="btn btn-info">Businessess</button></a> 
+        <a href="{% url 'contacts' %}"><button type="button" class="btn btn-info">Contacts</button></a>   
+      </p>
       </div>
     </div>
-    <p></p>
-    {% endfor %}
-    </div>
+    <br>
+    <br>
   </div>
-  
-    {% else %}
-    <h4 style="text-align:center"> No comments Upto Now</h4>
-    {% endif %}
-  </div> -->
-  <!-- <div class="card-letter" style="text-align:center">
-  </div> -->
-  <br>
-  <br>
-
-  
-</div>
-<style>
-
-.btn btn-primary{
-  text-align: center;
-  margin-right: 50%;
-}
-</style>
 {% endblock %}
