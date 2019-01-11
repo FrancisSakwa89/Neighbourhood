@@ -10,8 +10,8 @@
         <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
         <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
         <p class="card-text" style="font-style:italic;">{{neighbourhood.pub_date}}</p>
-        <h5>Occupants: {{neighbourhood.occupants_count}} people</h5>
-        <p class="card-title firstletter">Location: {{neighbourhood.location}}</p>
+        <h5>{{neighbourhood.occupants_count}} people</h5>
+        <p class="card-title firstletter"> {{neighbourhood.location}}</p>
 
     </div>
   </div>
