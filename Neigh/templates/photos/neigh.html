@@ -3,21 +3,16 @@
 {% block content %}
 <!-- <div class="jumbotron" style="background-image:url('https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80');background-size:cover"> -->
 
-    <div class="col-md-4 mx-auto">
-        <h2 class="firstletter">{{neighbourhood.name}}</h2>
-  <hr>
-  
-  <div class="col-md-4 mx-auto">
-      <img class='soloimg' src="{{neighbourhood.image.url}}" alt="{{ neighbourhood.name }}">
-    <div class="card-body">
-      <!-- <h5 class="card-title firstletter">{{neighbourhood.name}}</h5> -->
-      <p class="card-text">
-        <p>{{neighbourhood.location}}</p>
-        <p>{{neighbourhood.pub_date}}</p>
-        <p>{{neighbourhood.occupants_count}}</p>
+  <div class="col-md-4" style="color:white">
+      <img class='streamimg' src="{{neighbourhood.image.url}}" height="300px" width="95%" alt="{{ neighbourhood.name }}"></img>
+      <br>
+      <div class="col-md-12" style="color:white">
+        <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
+        <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
+        <p class="card-text" style="font-style:italic;">{{neighbourhood.pub_date}}</p>
+        <h5>Occupants: {{neighbourhood.occupants_count}} people</h5>
+        <p class="card-title firstletter">Location: {{neighbourhood.location}}</p>
 
-        </p>
-      <p class="card-text" style="color: whitesmoke">Owner: {{neighbourhood.email}}</p>
     </div>
   </div>
   <p></p>

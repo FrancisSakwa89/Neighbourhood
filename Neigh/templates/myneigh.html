@@ -2,45 +2,46 @@
 
 <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Spicy+Rice|Teko" rel="stylesheet">
 <div class="jumbotron">
-        <style>
-            
-            .jumbotron{
+  <style>
+
+    .jumbotron{
                 background: linear-gradient(to right, #16222a, #3a6073);
                 background-size: cover;
                 /* font-family: 'Luckiest Guy'; */
             }
             </style>
-    
-              <h2 style="color: white;text-align: center;font-family: 'Lobster', cursive;">Posted neighbourhoods</h2>
-              <br>
-              {% if neighbourhoods %}
-              <div class="row">
-                {% for neighbourhood in neighbourhoods %}
-                <div class="col-md-4" style="color:white">
-                    <img class='streamimg' src="{{neighbourhood.image.url}}" height="300px" width="95%"  alt="{{ neighbourhood.name }}"></img>
-                    <br>
-                    <div class="col-md-12" style="color:white">
-                    <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
-                    <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
-                    <p class="card-text" style="font-style:italic;">{{neighbourhood.pub_date}}</p>
-                    <h5>Occupants: {{neighbourhood.occupants_count}} people</h5>
-                    <p class="card-title firstletter">Location: {{neighbourhood.location}}</p>
 
-                    </div>
-                    <div class="animated flash">
-                      <p class="card-text"><a href="{% url 'neighbourhood' neighbourhood.id %}"><button type="button" class="btn btn-primary" style="background-color:#33705c;">View</button></a></p>
-                    </div>
-                    <br>
-                  </div>
-                  <br>
-                  {% endfor %}
-                </div>
-                <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
+  <h2 style="color: white;text-align: center;font-family: 'Lobster', cursive;">Posted neighbourhoods</h2>
+  <br>
+  {% if neighbourhoods %}
+  <div class="row">
+    {% for neighbourhood in neighbourhoods %}
+    <div class="col-md-4" style="color:white">
+      <img class='streamimg' src="{{neighbourhood.image.url}}" height="300px" width="95%" alt="{{ neighbourhood.name }}"></img>
+      <br>
+      <div class="col-md-12" style="color:white">
+        <h5 class="card-title firstletter">{{neighbourhood.name}}</h5>
+        <p class="card-text firstletter">{{ neighbourhood.description | truncatechars:450 }}</p>
+        <p class="card-text" style="font-style:italic;">{{neighbourhood.pub_date}}</p>
+        <h5>Occupants: {{neighbourhood.occupants_count}} people</h5>
+        <p class="card-title firstletter">Location: {{neighbourhood.location}}</p>
 
-                {% else %}
-                <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
-                {% endif %}
-              </div>
-            </div>
-            </div>
-          {% endblock %}
+      </div>
+      <div class="animated flash">
+        <p class="card-text"><a href="{% url 'neighbourhood' neighbourhood.id %}"><button type="button" class="btn btn-primary"
+              style="background-color:#33705c;">View</button></a></p>
+      </div>
+      <br>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+  <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
+
+  {% else %}
+  <h3> Add neighbourhoods<a href="{% url 'newneighbourhood' %}">here</a>.</h3>
+  {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}
