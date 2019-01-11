@@ -13,7 +13,7 @@ class Neighbourhood(models.Model):
   occupants_count = models.PositiveIntegerField()
   email = models.EmailField(max_length=60,default='email')
   description = models.TextField(default='description')
-  # pub_date = models.DateTimeField(auto_now_add=True,default='dat')
+  pub_date = models.DateTimeField(auto_now_add=True)
 
 
   def __str__(self):
@@ -32,6 +32,7 @@ class Business(models.Model):
   name = models.CharField(max_length=60)
   email = models.EmailField()
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  pub_date = models.DateTimeField(auto_now_add=True)
 
   def __str__(self):
     return self.name
@@ -98,3 +99,4 @@ class Contact(models.Model):
   contact = models.CharField(max_length=60)
   email = models.EmailField()
   neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
+  pub_date = models.DateTimeField(auto_now_add=True)
