@@ -1,0 +1,7 @@
+.demo-grid-wrapper .demo-grid-item-img{ display: inline-block; position: relative; width: 100%; border: 10px solid #fff; box-shadow: 0 0 45px 0 rgba(0,0,0,.15); cursor: pointer; overflow: hidden; }
+    .demo-grid-wrapper .demo-grid-item-img img { width: 100%; }
+    .demo-grid-wrapper .demo-grid-item-overlay{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-transition: background-color .3s ease-in; transition: background-color .3s ease-in; background-color: rgba(255,255,255,0); }
+    @keyframes animatedBackground { from { background-position: 0 0; } to { background-position: 100% 0; } }
+    .bg-animate {  background-position: 0 0;  background-repeat: repeat-x;  animation: animatedBackground 30s linear infinite;}
+    .bg-overlay:before { background-color: rgba(0, 0, 0, 0.75); content: ""; display: inline-block; height: 100%; left: 0; position: absolute;
+    top: 0; width: 100%; }

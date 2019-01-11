@@ -7,6 +7,19 @@
     <h2>Posts</h2>
   </div>
 
+  <div class="col-sm-4" style="margin-bottom: 2em;">
+    <div class="card bg-dark">
+      <div class="card-body">    
+        <h5 class="card-header">Love</h5>
+        <h5 class="card-text firstletter"> Pesa nani anajua kuna dooh uko nje</h5>
+        <p style="font-style:italic;text-decoration:underline">Posted by: Francis</p>
+        <a href="{% url 'comments' %}"><button type="button" class="btn btn-success">View Comments</button></a>
+
+    </div>
+  </div>
+</div>
+
+
 {% if posts %}
 <div class="row">
 {% for post in posts %}
