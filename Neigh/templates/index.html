@@ -13,6 +13,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron|Spicy+Rice|Teko" rel="stylesheet">
+
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="../../css/bootstrap.min.css" rel="stylesheet">
@@ -49,18 +51,26 @@
 
                 <!--Card content-->
         
-                <div class="card-body card-body-cascade text-center wow fadeIn" data-wow-delay="0.2s" style="background-color:skyblue">
+                <div class="card-body card-body-cascade text-center wow fadeIn bg-dark" data-wow-delay="0.2s" style="background-color:skyblue">
                     <!--Title-->
-                    <h4 class="card-title" style="color:black"><strong>OTHER APPLICATIONS</strong></h4>
+                    <h4 class="card-title " style="color:white;font-family: 'Orbitron';font-size:2em"><strong><a href="{% url 'myneighbourhood'%}" style="color:white">PREV</a>  && <a href="{% url 'mypost'%}" style="color:white">NEXT</a></strong></h4>
                     
 
-                        <a href="{% url 'myneighbourhood' %}" class="btn btn-primary btn-lg">My Hoods</a>
+                        <!-- <a href="{% url 'myneighbourhood' %}" class="btn btn-primary btn-lg">My Hoods</a>
                         <a href="{% url 'newprofile' %}" class="btn btn-primary btn-lg">New Profile</a>
                         <a href="{% url 'newneighbourhood' %}" class="btn btn-primary btn-lg">Add Hoods</a>
                         <a href="{% url 'business' %}" class="btn btn-primary btn-lg">Businessess</a>
-                        <a href="{% url 'contacts' %}" class="btn btn-primary btn-lg">Contacts</a>
+                        <a href="{% url 'contacts' %}" class="btn btn-primary btn-lg">Contacts</a> -->
 
+                        <div class="well" style="text-align:center;margin-right: 30%">
+                            <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+                      
+                                <a href="{% url 'mypost'%}" class="btn btn-neutral float-right" title="Contacts" accesskey="n" rel="next" style="color:white">Posts <span class="fa fa-arrow-circle-right"></span></a>
+                                <a href="{% url 'myneighbourhood'%}" class="btn btn-neutral" title="Hoods" accesskey="p" rel="prev" style="color:white"><span class="fa fa-arrow-circle-left"></span>Hoods</a>
 
+                              
+                            </div>
+                            </div>
                 </div>
                 <!--/.Card content-->
 
@@ -100,9 +110,17 @@
 
                 <!--Third column-->
                 <div class="col-md-2 mx-auto">
-                    <h5 class="text-uppercase font-weight-bold mb-4">Neighbourhoods</h5>
+                    <h5 class="text-uppercase font-weight-bold mb-4">Businessess</h5>
                     <ul class="list-unstyled">
-                        <li><a  href="{% url 'myneighbourhood' %}" style="color:white">My Neighbourhoods</a></li>
+                        <li><a  href="{% url 'business' %}" style="color:white">Biz</a></li>
+                        
+                    </ul>
+                </div>
+                <!--Third column-->
+                <div class="col-md-2 mx-auto">
+                    <h5 class="text-uppercase font-weight-bold mb-4">Contacts</h5>
+                    <ul class="list-unstyled">
+                        <li><a  href="{% url 'contacts' %}" style="color:white">contacts</a></li>
                         
                     </ul>
                 </div>
@@ -151,7 +169,7 @@
         <!--/.Copyright-->
 
     </footer>
-    
+  
     </div>
     <!--/.Footer-->
 
