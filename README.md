@@ -25,15 +25,15 @@ A clone of the website for the popular  app Instagram.
 
 ## BDD
 | Behavior        | Input           | Output  |
-| ------------- |:-------------:| -----:|
+| ------------- |:----------------------------:| -----:|
 | Click On SignUp | Your email  <br> Username : franco <br> Password : francis <br> Password confirmation | New user is registered |
 | Sign in/Log in |Username: <br> Password : francis | Signed in |
 | Set up profile |Photo: <br> Bio: <br> neighbourhood: <br> contacts: | Profile Set |
 | View neighbourhoods | Click on hoods  & Displays the neighbourhoods | List of available neighbourhoods |
 | View posts | Cick view posts button | List of available posts |
-| View comments | **Click** a view button | Navigates to the selected post |
-| Create a post | **Click On Add a  Post** | The authenticated user is navigated to the post form to fill in |
-| Comment on a post | **Click Comment** | User navigates to the newcomment form  |
+| View comments | Click a view button | Navigates to the selected post |
+| Create a post |Click On Add a  Post | The authenticated user is navigated to the post form to fill in |
+| Comment on a post |Click Comment | User navigates to the newcomment form  |
 | View Contacts,Businesses | Cick businesses/contacts buttons | List of available contacts/businesses |
 
 
@@ -58,4 +58,4 @@ For more info or assistance(If there is a bug in my code), please contact:
 
 Sakwa Francis -- email: sakwafrancis89@gmail.com
 
-![License: MIT](https://choosealicense.com/licenses/mit/#/License-MIT-yellow.svg) copy;2018 [Francis Sakwa](https://github.com/FrancisSakwa89/)
+![License: MIT](https://choosealicense.com/#licenses/mit/License-MIT-yellow.svg) copy;2018 [Francis Sakwa](https://github.com/FrancisSakwa89/)
