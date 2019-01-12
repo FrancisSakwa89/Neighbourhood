@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+<hr>
+<div class="alert alert-success" style="margin-right:10%;margin-left:30%">
+    Welcome to <strong style="color:black">{{profile.neighbourhood}}</strong> hood. To change a neighbourhood just update your profile!!  </div>
+      
 <div class="container">
     <div class="intro">
         <h2>Your Profile</h2>
@@ -18,7 +22,7 @@
     <p></p>
     <span><a class='maillink' href="mailto:{{profile.contact}}" style="color: whitesmoke">{{profile.contact}}</a></span>
     <p></p>
-    <h5 class="card-title firstletter">Neighbourhood: {{profile.neighbourhood}}</h5>
+    <h5 class="card-title firstletter"> Current hood: {{profile.neighbourhood}}</h5>
     <a href="{% url 'newprofile' %}"><button type="button" class="btn btn-info">Update Profile</button></a>   
     <br>
     <br>
