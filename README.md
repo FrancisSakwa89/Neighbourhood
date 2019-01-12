@@ -8,7 +8,7 @@ A clone of the website for the popular  app Instagram.
 
 
 ## Setup/Installation Requirements
-1. Open the live site at [Neighborhood]https://neigh-app7.herokuapp.com/
+1. Open the live site at [Neighbourhood](https://neigh-app7.herokuapp.com/)
 2.  Clone [Neighborhood](https://github.com/FrancisSakwa89/Neighbourhood)to get started and git clone the link in your terminal and open your preffered text editor.
 3. Install requirements.txt file with everything by:
 4. _*pip install -r requirements.txt*_
@@ -58,4 +58,4 @@ For more info or assistance(If there is a bug in my code), please contact:
 
 Sakwa Francis -- email: sakwafrancis89@gmail.com
 
-![License: MIT](https://choosealicense.com/licenses/mit/#/License-MIT-yellow.svg) copy;2018 [Francis Sakwa](https://github.com/FrancisSakwa89/)
+[MIT License](https://choosealicense.com/licenses/mit/#) copy;2018 [Francis Sakwa](https://github.com/FrancisSakwa89/)
