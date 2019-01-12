@@ -24,15 +24,17 @@ A clone of the website for the popular  app Instagram.
 7. Only view details of a single neighborhood.
 
 ## BDD
-|----------------------------------------|---------------------------------------|--------------|
-|Input                                   |Behaviour                              |Output        |
-|----------------------------------------|---------------------------------------|--------------|
-|Sinup                                   |Redirected to login form               |Login form    |
-|----------------------------------------|---------------------------------------|--------------|
-|Login                                   |                                       |              |
-|----------------------------------------|---------------------------------------|--------------|
-|Click Hoods,businesses,contacts,profile |                                       |              |
-|----------------------------------------|---------------------------------------|--------------|
+| Behavior        | Input           | Output  |
+| ------------- |:-------------:| -----:|
+| Click On SignUp | Your email  <br> Username : franco <br> Password : francis <br> Password confirmation | New user is registered |
+| Sign in/Log in |Username: <br> Password : francis | Signed in |
+| Set up profile |Photo: <br> Bio: <br> neighbourhood: <br> contacts: | Profile Set |
+| View neighbourhoods | Click on hoods  & Displays the neighbourhoods | List of available neighbourhoods |
+| View posts | Cick view posts button | List of available posts |
+| View comments | **Click** a view button | Navigates to the selected post |
+| Create a post | **Click On Add a  Post** | The authenticated user is navigated to the post form to fill in |
+| Comment on a post | **Click Comment** | User navigates to the newcomment form  |
+| View Contacts,Businesses | Cick businesses/contacts buttons | List of available contacts/businesses |
 
 
 # Running Tests
