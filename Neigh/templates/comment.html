@@ -3,26 +3,15 @@
 {% block content %}
 
 <br>
-<h5 style="text-align:center">User comments</h5>
-    <div class="row">
-<div class="col-md-4">
-    <div class="card text-white bg-dark text-white mb-3">
-            <h5 class="card-header">Ata mimi sina</h5>
-            <h5 class="card-text firstletter">Neighbourhood: Kakamega</h5>
-            <p style="font-style:italic;text-decoration:underline">Posted by: Francis</p>      
-            <footer class="blockquote-footer" style="color:white;font-weight:bold"><cite name="Source name">Commented On: jan 10,2019 1:26pm</cite></footer>
-        </div>
-      </div>
-    </div>
-
+<h5 style="text-align:center">PEOPLE'S COMMENTS</h5>
 {% if comments %}
 <div class="row">
-{% for comments in comments %}
-<div class="col-md-4">
-<div class="card text-white bg-dark text-white mb-3">
-    <div class="col-md-4">
-        <h5 class="card-header">{{comment.comment}}</h5>
-        <h5 class="card-text firstletter">{{ comment.neighbourhood}}</h5>
+{% for comment in comments %}
+<div class="col-md-4" style="margin-bottom: 2em;">
+        <div class="card bg-dark">
+        <div class="card-body">           
+            <h5 class="card-header">{{comment.comment}}</h5>
+        <h5 class="card-text firstletter">Neighbourhood: {{ comment.neighbourhood}}</h5>
         <p style="font-style:italic;text-decoration:underline">Posted by: {{comment.postername}}</p>      
         <footer class="blockquote-footer" style="color:white;font-weight:bold"><cite name="Source name">Commented On: {{comment.pub_date}}</cite></footer>
     </div>
