@@ -259,15 +259,16 @@ def newcomment(request):
   frank = request.user.id
   profile = Profile.objects.get(user=frank)
   idd = id
+
   current_username = request.user.username
   if request.method == 'POST':
     form = NewCommentForm(request.POST)
     if form.is_valid():
       comment = form.save(commit=False)
       comment.postername = current_username
-      comment.post = Post.objects.get(pk=id)
+      comment.post = Post.objects.all()
       comment.save()
-    return redirect('post',id)
+    return redirect('welcome')
 
   else:
     form = NewCommentForm()
