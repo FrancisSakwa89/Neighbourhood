@@ -1,7 +1,96 @@
-.demo-grid-wrapper .demo-grid-item-img{ display: inline-block; position: relative; width: 100%; border: 10px solid #fff; box-shadow: 0 0 45px 0 rgba(0,0,0,.15); cursor: pointer; overflow: hidden; }
-    .demo-grid-wrapper .demo-grid-item-img img { width: 100%; }
-    .demo-grid-wrapper .demo-grid-item-overlay{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-transition: background-color .3s ease-in; transition: background-color .3s ease-in; background-color: rgba(255,255,255,0); }
-    @keyframes animatedBackground { from { background-position: 0 0; } to { background-position: 100% 0; } }
-    .bg-animate {  background-position: 0 0;  background-repeat: repeat-x;  animation: animatedBackground 30s linear infinite;}
-    .bg-overlay:before { background-color: rgba(0, 0, 0, 0.75); content: ""; display: inline-block; height: 100%; left: 0; position: absolute;
-    top: 0; width: 100%; }
+    .open-button {
+        background-color: black;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+      }
+      
+      /* The popup chat - hidden by default */
+      .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+      }
+      
+      /* Add styles to the form container */
+      .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+      }
+      
+      /* Full-width textarea */
+      .form-container textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+        resize: none;
+        min-height: 200px;
+      }
+      
+      /* When the textarea gets focus, do something */
+      .form-container textarea:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      
+      /* Set a style for the submit/send button */
+      .form-container .btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom:10px;
+        opacity: 0.8;
+      }
+      
+      /* Add a red background color to the cancel button */
+      .form-container .cancel {
+        /* background-color:; */
+      }
+      
+      /* Add some hover effects to buttons */
+      .form-container .btn:hover, .open-button:hover {
+        opacity: 1;
+      }
+
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        left: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: green;
+      }
+
+      .chat-popup .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }

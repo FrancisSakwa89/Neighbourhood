@@ -324,3 +324,11 @@ def comments(request):
   comments = Comment.objects.all()
   return render(request, 'comment.html',{'profile':frank,'comments':comments})
 
+
+@login_required(login_url='/accounts/login/')
+def chat(request):
+  id = request.user.id
+  profile = Profile.objects.get(user=id)
+
+
+  return render(request, 'chat.html',{'profile':profile})

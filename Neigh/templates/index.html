@@ -161,6 +161,60 @@
     
     </script>
 
+<script src="/static/js/web.min.js"></script>
+
+
+
+    </head>
+    <body>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Back To Top</button>
+    
+    <button class="open-button" onclick="openForm()">Chat</button>
+    
+    <div class="chat-popup" id="myForm">
+            <a href="javascript:void(0)" class="closebtn" onclick="closePop()">&times;</a>
+      <form action="{% url 'chat'%}" class="form-container">
+        <h1 style="color:black">Chat</h1>
+    
+        <label for="msg"><b>Message</b></label>
+        <textarea placeholder="Type message.." name="msg" required></textarea>
+    
+        <button type="submit" class="btn">Send</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+    
+    <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    function closePop() {
+  document.getElementById("myForm").style.width = "0";
+}
+    </script>
+    
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+          } else {
+            document.getElementById("myBtn").style.display = "none";
+          }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+        </script>
 
 </body>
 
