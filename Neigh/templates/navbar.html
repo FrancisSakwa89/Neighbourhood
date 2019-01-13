@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top bg-dark">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class=" btn btn-outline-success glyphicon glyphicon-home" href="{% url 'welcome'%}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="false">More Apps</a>
+            <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="true">More Apps</a>
           <ul class="dropdown-menu" role="menu" style="color:black"><li>              
           
           <li><a class="nav-link" href="{% url 'newneighbourhood' %}">Add Neighbourhood</a></li>
@@ -27,7 +27,7 @@
       
           {% if user.is_authenticated %}
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="false">Account
+            <a href="#" class="dropdown-toggle btn btn-outline-success" data-toggle="dropdown" role="button" aria-expanded="true">Account
                       <span class="caret"></span>
                   </a>
             <ul class="dropdown-menu" role="menu">
